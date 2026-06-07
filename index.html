@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Navigation Ultimate 2026 | Salon Grade</title>
+    <style>
+        :root {
+            /* 最新の美容系ニュアンスカラーパレット */
+            --base-white: #FFFFFF;
+            --bg-beige: #FDFBF7; /* 柔らかいライトベージュ */
+            --primary-accent: #E07A5F; /* 洗練されたテラコッタ（攻め・血色） */
+            --secondary-accent: #81B29A; /* 落ち着いたセージグリーン（守り・バリア） */
+            --text-dark: #3D405B; /* 深みのあるスレートブルー（テキスト） */
+            --text-muted: #8D99AE; /* ダスティブルー（補足テキスト） */
+            --border-soft: #F1E3D3; /* ソフトベージュ（枠線） */
+            --glass-bg: rgba(255, 255, 255, 0.7); /* グラスモルフィズム用 */
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+            background-color: var(--bg-beige);
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 60px 20px;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-accent);
+            margin-bottom: 5px;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 50px;
+            letter-spacing: 0.02em;
+        }
+
+        /* 2026年デザイン：グラスモルフィズムと柔らかいシャドウ */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 8px;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.05);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 50px;
+            margin: 0 5px;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary-accent);
+            background: rgba(224, 122, 95, 0.05);
+        }
+
+        .tab-btn.active {
+            color: var(--base-white);
+            background: linear-gradient(135deg, var(--primary-accent), #f19f86);
+            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.3);
+        }
+
+        /* 検索セクション：強調と洗練 */
+        .search-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+
+        .search-section label {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            flex: 0 1 70%;
+            padding: 15px 20px;
+            border: 1px solid var(--border-soft);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            background: #fff;
+            outline: none;
+            transition: all 0.3s;
+            color: var(--text-dark);
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--primary-accent);
+            box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.1);
+        }
+
+        button.search-trigger {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary-accent), #f19f86);
+            color: var(--base-white);
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(224, 122, 95, 0.2);
+            white-space: nowrap;
+        }
+
+        button.search-trigger:hover {
+            box-shadow: 0 6px 20px rgba(224, 122, 95, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .keywords-hint {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 2.2;
+        }
+
+        .keywords-hint strong {
+            color: var(--text-dark);
+            margin-right: 5px;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            background: #F8EDEA; /* 柔らかいモーヴピンク */
+            color: #C9ADA7; /* ダスティピンク */
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin: 0 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            border: 1px solid #F1E3D3;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .keyword-tag:hover {
+            background: var(--border-soft);
+            color: var(--primary-accent);
+        }
+
+        /* 結果表示エリア：柔らかい高級感 */
+        .result-card {
+            background: var(--base-white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+            display: none;
+            animation: fadeIn 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-header {
+            display: flex;
+            flex-direction: column;
+            border-bottom: 2px solid #F0F0F0;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .result-header h2 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--primary-accent);
+            font-weight: bold;
+        }
+
+        .skin-description {
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.05), rgba(243, 156, 18, 0.01));
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.01);
+        }
+
+        .skin-description strong {
+            color: #E07A5F; 
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            color: var(--primary-accent);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--primary-accent);
+        }
+
+        .section-title.守り {
+            color: var(--secondary-accent);
+        }
+        .section-title.守り::before {
+             background-color: var(--secondary-accent);
+        }
+
+        /* 詳細アイテム：角丸カード */
+        .detail-item {
+            background: var(--bg-beige);
+            border: 1px solid var(--border-soft);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.01);
+            transition: all 0.3s;
+        }
+        
+        .detail-item:hover {
+            box-shadow: inset 0 2px 15px rgba(0,0,0,0.02);
+        }
+
+        .item-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* アイコン：CSSでのSVG描画 */
+        .item-name::before {
+            content: '';
+            display: inline-block;
+            width: 1.2rem;
+            height: 1.2rem;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+
+        /* 成分（分子アイコン） */
+        .item-name.ingredient-icon::before {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="19" r="4"></circle><circle cx="17" cy="5" r="4"></circle><path d="M7 15l10-10"></path></svg>');
+        }
+
+        /* 施術（スパークルアイコン） */
+        .item-name.treatment-icon::before {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2381B29A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"></path></svg>');
+        }
+
+        .detail-section {
+            margin-bottom: 12px;
+        }
+
+        .detail-section-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .detail-text {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin: 0;
+            padding-left: 12px;
+            border-left: 2px solid rgba(224, 122, 95, 0.2);
+        }
+
+        .treatment-text {
+            border-left: 2px solid rgba(129, 178, 154, 0.4);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Beauty Navigation</h1>
+    <div class="subtitle">Ultimate 2026 | Salon Grade Analysis</div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('skintype')">① 肌質別ケア</button>
+        <button class="tab-btn" onclick="switchTab('concern')">② お悩み検索</button>
+        <button class="tab-btn" onclick="switchTab('ingredient')">③ 美容成分辞書</button>
+    </div>
+
+    <div id="skintype-section" class="tab-content">
+        <div class="search-section">
+            <label>ご自身の「肌質」を選択、または入力してください</label>
+            <div class="search-box">
+                <input type="text" id="skintype-input" placeholder="例：普通肌、乾燥肌、脂性肌、混合肌、敏感肌">
+                <button class="search-trigger" onclick="searchBySkinType()">診断する</button>
+            </div>
+            <div class="keywords-hint">
+                <span class="keyword-tag" onclick="setKeyword('skintype', '普通肌')">普通肌</span>
+                <span class="keyword-tag" onclick="setKeyword('skintype', '乾燥肌')">乾燥肌</span>
+                <span class="keyword-tag" onclick="setKeyword('skintype', '脂性肌')">脂性肌（オイリー）</span>
+                <span class="keyword-tag" onclick="setKeyword('skintype', '混合肌')">混合肌（インナードライ）</span>
+                <span class="keyword-tag" onclick="setKeyword('skintype', '敏感肌')">敏感肌</span>
+            </div>
+        </div>
+        <div id="skintype-result" class="result-card"></div>
+    </div>
+
+    <div id="concern-section" class="tab-content hidden">
+        <div class="search-section">
+            <label>気になるお悩み、キーワードを入力してください</label>
+            <div class="search-box">
+                <input type="text" id="concern-input" placeholder="例：クレーター、たるみ、肝斑、インナードライ">
+                <button class="search-trigger" onclick="searchByConcern()">解決策を探す</button>
+            </div>
+            <div class="keywords-hint">
+                <span class="keyword-tag" onclick="setKeyword('concern', 'クレーター')">クレーター</span>
+                <span class="keyword-tag" onclick="setKeyword('concern', 'たるみ')">たるみ・ほうれい線</span>
+                <span class="keyword-tag" onclick="setKeyword('concern', 'くすみ')">くすみ・肝斑</span>
+                <span class="keyword-tag" onclick="setKeyword('concern', '毛穴の開き')">毛穴の開き</span>
+            </div>
+        </div>
+        <div id="concern-result" class="result-card"></div>
+    </div>
+
+    <div id="ingredient-section" class="tab-content hidden">
+        <div class="search-section">
+            <label>調べたい「美容成分」を入力してください</label>
+            <div class="search-box">
+                <input type="text" id="ingredient-input" placeholder="例：エクソソーム、バクチオール、NMN、セラミド">
+                <button class="search-trigger" onclick="searchByIngredient()">成分を調べる</button>
+            </div>
+            <div class="keywords-hint">
+                <strong>【次世代成分】</strong>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'エクソソーム')">エクソソーム</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'PDRN')">PDRN</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'バクチオール')">バクチオール</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'NMN')">NMN</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'グルタチオン')">グルタチオン</span>
+                <br><strong>【定番・有効成分】</strong>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'ビタミンC')">ビタミンC</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'レチノール')">レチノール</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'ライスパワー')">ライスパワー</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'ナイアシンアミド')">ナイアシンアミド</span>
+                <span class="keyword-tag" onclick="setKeyword('ingredient', 'セラミド')">セラミド</span>
+            </div>
+        </div>
+        <div id="ingredient-result" class="result-card"></div>
+    </div>
+</div>
+
+<script>
+    // ==========================================
+    // ① 肌質別マスターデータベース（完全版）
+    // ==========================================
+    const skinTypeData = [
+        {
+            keywords: ["普通肌", "ノーマル"],
+            title: "普通肌（Normal Skin）",
+            description: "水分と油分のバランスが理想的で、トラブルが起きにくい肌質です。キメが整っており、バリア機能も正常に働いています。現状維持と「未来の老化予防（攻めと守り）」を両立するケアが重要です。",
+            ingredients: [
+                {
+                    name: "フラーレン",
+                    effect: "ビタミンCの数百倍とも言われる強力な抗酸化力で、紫外線やストレスによる活性酸素を長時間にわたって無害化し、肌の酸化（老化）を未然に防ぎます。",
+                    reason: "トラブルのない普通肌が最も注力すべきは「光老化の予防」です。フラーレンはスポンジのように活性酸素を吸着し続けるため、日中の肌ダメージをゼロに近づける最強の守りとなります。"
+                },
+                {
+                    name: "ビタミンC誘導体 ＋ ナイアシンアミド",
+                    effect: "コラーゲンの生成をサポートしつつ、メラニンの蓄積を防ぎ、肌の透明感とハリを維持します。",
+                    reason: "普通肌は攻めの成分にも耐えやすいため、シミとシワを同時に予防できるこの2つの成分を日常的に取り入れることで、数年後の肌状態に圧倒的な差がつきます。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "光治療（IPL / Stellar M22など）",
+                    content: "複数の波長の光を顔全体にマイルドに照射し、潜在的なシミや赤み、コラーゲン低下を総合的にメンテナンスする治療です。",
+                    reason: "大きな悩みがない状態でも、定期的なIPL照射によって肌全体のトーンを均一に保ち、ターンオーバーを正常化させる「肌の定期検診・クリーニング」として最適だからです。"
+                }
+            ]
+        },
+        {
+            keywords: ["乾燥肌", "ドライ"],
+            title: "乾燥肌（Dry Skin）",
+            description: "皮脂の分泌量が少なく、角質層の水分量も不足している状態。バリア機能が低下しやすく、洗顔後のつっぱり感や、ちりめんジワ、粉吹きが起きやすいのが特徴です。",
+            ingredients: [
+                {
+                    name: "ヒト型セラミド ＋ ライスパワー®No.11+",
+                    effect: "セラミドで細胞間の隙間を埋めて水分の蒸発を即座に防ぎ、ライスパワーで肌自らがセラミドを作り出す能力（水分保持能）を根本から改善します。No.11+はシワ改善効果も持ちます。",
+                    reason: "乾燥肌は「自前で潤いを保つ力」が欠如しています。ヒアルロン酸などで外から濡らすだけでなく、バリアの主成分であるセラミドを補い・作らせるという根本治療が必要不可欠だからです。"
+                },
+                {
+                    name: "D-パントテニルアルコール（パンテノール）",
+                    effect: "肌の修復ビタミンと呼ばれ、荒れた角質層のバリア機能を修復し、保水力を高めます。刺激を和らげる効果に優れます。",
+                    reason: "乾燥して微細な炎症（ヒリヒリ感）が起きている肌を優しく鎮静しながら潤すため、攻めの成分を使う前の土台作りに最適だからです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "非架橋ヒアルロン酸の水光注射 / エクソソーム導入",
+                    content: "極細の針で真皮層へ直接、水分を抱え込むヒアルロン酸や修復成分（エクソソーム）を均等に注入・導入します。",
+                    reason: "化粧水が届かない真皮層の水分枯渇を物理的に解決し、細胞レベルから乾燥しにくい分厚い肌へと作り変えることができるためです。"
+                }
+            ]
+        },
+        {
+            keywords: ["脂性肌", "オイリー", "テカリ"],
+            title: "脂性肌（Oily Skin）",
+            description: "皮脂腺の働きが活発で、顔全体にテカリやベタつきが出やすい肌質。毛穴の開きや黒ずみ、ニキビといったトラブルが発生しやすい状態です。",
+            ingredients: [
+                {
+                    name: "アゼライン酸 ＋ ビタミンC",
+                    effect: "皮脂の分泌を強力にコントロールし、アクネ菌の増殖を抑え、毛穴の開きや皮脂の酸化による黒ずみを防ぎます。",
+                    reason: "皮脂を「取る」のではなく「出させない・酸化させない」アプローチが必須です。アゼライン酸は皮脂抑制と抗菌に優れ、ビタミンCは皮脂の酸化ダメージを防ぐため相性抜群です。"
+                },
+                {
+                    name: "サリチル酸（BHA） / ティーツリー",
+                    effect: "脂溶性のBHAが毛穴の奥の皮脂詰まりを溶かし、ティーツリーが天然の殺菌作用でニキビの炎症を防ぎます。",
+                    reason: "水溶性の成分では皮脂に弾かれてしまうため、油分に溶け込むサリチル酸で毛穴内部の角栓を大掃除することが脂性肌のトラブル予防の第一歩だからです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "ハイドラフェイシャル ＋ スキンボトックス",
+                    content: "水流ピーリングで毛穴の奥の皮脂を洗浄した後、皮膚の浅い層にボトックスを細かく打ち、皮脂腺の働きをマイルドに麻痺させます。",
+                    reason: "皮脂の詰まりを物理的にリセットし、スキンボトックスで「皮脂を出す蛇口を締める」ことで、数ヶ月間にわたりテカリや毛穴の開きを劇的に抑え込めるからです。"
+                }
+            ]
+        },
+        {
+            keywords: ["混合肌", "インナードライ", "コンビネーション"],
+            title: "混合肌・インナードライ（Combination Skin）",
+            description: "Tゾーン（おでこ・鼻）は皮脂でテカるのに、Uゾーン（頬・口周り）は乾燥してつっぱる、日本人に最も多い肌質。内部の乾燥を補うために過剰な皮脂が出ている状態です。",
+            ingredients: [
+                {
+                    name: "ガラクトミセス培養液 ＋ アミノ酸（NMF）",
+                    effect: "酵母発酵エキス（ガラクトミセス）が皮脂バランスを整えながら透明感を引き出し、アミノ酸が肌本来の天然保湿因子を補填してキメを均一に揃えます。",
+                    reason: "部位によって状態が違うため、皮脂を奪いすぎず、かつ水分をしっかり与える「調整力」の高い発酵成分と、肌に親和性の高いアミノ酸が全体の底上げに最適だからです。"
+                },
+                {
+                    name: "ナイアシンアミド",
+                    effect: "セラミドの合成を促してUゾーンの乾燥（バリア機能低下）を改善しつつ、Tゾーンの皮脂分泌もマイルドに抑える効果を持ちます。",
+                    reason: "一つの成分で「保湿」と「皮脂抑制」という相反する混合肌の悩みを同時にカバーできる、極めて優秀なバランサー成分だからです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "マッサージピール（PRX-T33） ＋ イオン導入",
+                    content: "表面を剥離させずに真皮層を刺激するピーリングでターンオーバーを均一化し、その後、ビタミンCやトラネキサム酸を電気の力で肌の奥まで浸透させます。",
+                    reason: "Tゾーンの古い角質を滑らかに整えつつ、Uゾーンの真皮にハリを与え、全体の水分・油分バランスを再構築できるためです。"
+                }
+            ]
+        },
+        {
+            keywords: ["敏感肌", "ゆらぎ肌", "センシティブ"],
+            title: "敏感肌（Sensitive Skin）",
+            description: "角質層のバリア機能が極端に低下し、外部刺激（紫外線、花粉、化粧品、摩擦）に対して過敏に反応してしまう状態。赤み、ヒリヒリ感、かゆみが頻発します。",
+            ingredients: [
+                {
+                    name: "GABOB（ガンマ-アミノ-ベータ-ヒドロキシ酪酸）",
+                    effect: "肌の神経伝達系にアプローチし、刺激に対する過剰な反応（ヒリヒリ感や赤み）を能動的に鎮め、ストレスに強い肌を作ります。",
+                    reason: "従来の「守るだけ」のケアとは異なり、敏感に傾く現代人の肌の「過剰な炎症シグナル」そのものをブロックする、2026年注目の新世代・能動的敏感肌ケア成分だからです。"
+                },
+                {
+                    name: "CICA（ツボクサエキス） ＋ グリチルリチン酸2K",
+                    effect: "CICAが傷ついた組織の修復を促し、漢方由来のグリチルリチン酸2Kが強力な消炎作用で今起きている赤みや肌荒れを急速に鎮静します。",
+                    reason: "敏感肌は常に微細な炎症を起こしている状態（慢性炎症）であるため、まずは圧倒的な抗炎症・鎮静成分で火事を消し止めることが最優先となるからです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "LDM（水玉リフティング） / エクソソーム導入",
+                    content: "痛みや熱を全く伴わない高密度超音波（LDM）や、細胞の修復カプセルであるエクソソームをエレクトロポレーションで導入します。",
+                    reason: "敏感肌はレーザーや針の刺激（ダウンタイム）に耐えられないため、物理的ダメージゼロで細胞の免疫力と自己修復力を高める再生医療的アプローチが最も安全かつ確実だからです。"
+                }
+            ]
+        }
+    ];
+
+    // ==========================================
+    // ② お悩み別マスターデータベース（完全版）
+    // ==========================================
+    const concernDataMaster = [
+        {
+            keywords: ["クレーター", "ニキビ跡", "凸凹", "赤み"],
+            title: "ニキビ跡（クレーター・赤み・色素沈着）",
+            ingredients: [
+                {
+                    name: "PDRN（ポリデオキシリボヌクレオチド）",
+                    effect: "サーモン由来のDNA断片が、ダメージを受けた皮膚組織のDNAレベルでの修復を促し、毛細血管の新生やコラーゲン増殖を強力にブーストして凹凸を内側から持ち上げます。",
+                    reason: "韓国の「サーモン注射」から化粧品へ波及した最先端の再生系成分であり、従来のスキンケアでは不可能だった「欠損した組織（クレーター）の物理的修復サポート」に極めて高いエビデンスを持つためです。"
+                },
+                {
+                    name: "アゼライン酸 ＋ トラネキサム酸",
+                    effect: "炎症による赤み（毛細血管の拡張）と、炎症後色素沈着（茶色いシミ）のダブルをブロックし、ニキビ跡の色ムラを消し去ります。",
+                    reason: "ニキビ跡の色素沈着はメラノサイトの暴走が原因であり、抗炎症とメラニン生成阻害を同時に行う医薬部外品クラスの成分が必要だからです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "ポテンツァ（POTENZA）マックーム導入",
+                    content: "マイクロニードルで肌に微細な穴を開け、高周波（RF）を照射しながら、コラーゲン生成を促すPLLA製剤（マックーム）やエクソソームを真皮に直接注入します。",
+                    reason: "クレーター治療において、熱による引き締め、針による創傷治癒、そして薬剤のダイレクトな注入という3つのアプローチを同時に行える、現在最も効果的な最新治療だからです。"
+                }
+            ]
+        },
+        {
+            keywords: ["たるみ", "ほうれい線", "シワ", "ハリ不足", "エイジング"],
+            title: "エイジングサイン（シワ・たるみ・ハリ不足）",
+            ingredients: [
+                {
+                    name: "バクチオール ＋ NMN",
+                    effect: "バクチオールがレチノールと同様にコラーゲン産生を促しシワを改善。NMNが細胞のミトコンドリアを活性化させ、長寿遺伝子（サーチュイン）に働きかけて若返りを図ります。",
+                    reason: "バクチオールは「第2のレチノール」と呼ばれ、A反応（皮剥け）や紫外線過敏がないため日中も使えます。NMNとの組み合わせは、細胞のエネルギー回復と構造強化を行う2026年最強の次世代エイジングケアだからです。"
+                },
+                {
+                    name: "植物幹細胞エキス ＋ エクソソーム",
+                    effect: "衰えた細胞に対し「若返り・分裂せよ」というメッセージ物質（エクソソーム）を届け、肌自身の幹細胞を活性化させて根底からハリを生み出します。",
+                    reason: "加齢によりコラーゲンを作る線維芽細胞自体が減少・老化しているため、外部から成分を補うだけでなく、細胞同士のコミュニケーションを活性化する「再生医療発想」が不可欠だからです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "ジュベルック（Juvelook） / ボルニューマ（Volnewmer）",
+                    content: "次世代のコラーゲンブースター（ジュベルック）の注入で内側から肌をふっくらさせ、最新の高周波RF機器（ボルニューマ）で脂肪と筋膜を強力にタイトニングします。",
+                    reason: "シワやたるみは「ボリュームの減少（凹み）」と「組織の緩み（下垂）」の複合です。ジュベルックで中身を詰めて、ボルニューマで外側から引き締めることで、外科手術なしで劇的な若返りが可能だからです。"
+                }
+            ]
+        },
+        {
+            keywords: ["くすみ", "シミ", "美白", "肝斑", "トーンアップ"],
+            title: "色素トラブル（シミ・肝斑・くすみ）",
+            ingredients: [
+                {
+                    name: "グルタチオン（白玉成分） ＋ ビタミンC",
+                    effect: "強力な抗酸化作用でメラニンの生成を根本から抑制し、黒色メラニンを無色化。さらに黄ぐすみの原因となる糖化・酸化ダメージを一掃します。",
+                    reason: "美容クリニックの「白玉点滴」の主成分であるグルタチオンは、ビタミンC単体よりもさらに強力な還元力を持ち、透き通るような白さを引き出す「攻めの美白」の超新星だからです。"
+                },
+                {
+                    name: "コウジ酸 / アルブチン / カモミラET",
+                    effect: "紫外線ダメージを受けた際に出る「シミを作れ」という情報伝達物質をブロックし、チロシナーゼ酵素の働きを先回りして阻害します。",
+                    reason: "日本の厚生労働省が認めた美白有効成分であり、歴史と確かなエビデンスに基づき、できてしまったシミだけでなく「これからのシミ」を確実に防ぐためです。"
+                }
+            ],
+            treatments: [
+                {
+                    name: "ピコトーニング ＋ 白玉点滴（高濃度グルタチオン）",
+                    content: "ピコレーザーで肌内部に蓄積した微細なメラニンを衝撃波で粉砕しつつ、血中から高濃度のグルタチオンを入れて全身の抗酸化と美白を促します。",
+                    reason: "外側（レーザーによる物理的破壊）と内側（点滴によるメラニン生成抑制）からのダブルアプローチが、肝斑やくすみ治療において最も早く確実な結果を出すからです。"
+                }
+            ]
+        }
+    ];
+
+    // ==========================================
+    // ③ 美容成分辞書データベース（完全版）
+    // ==========================================
+    const ingredientDatabase = {
+        "エクソソーム": {
+            name: "エクソソーム（幹細胞培養上清液由来）",
+            summary: "再生医療発想。細胞間の情報伝達を担うカプセルであり、エイジングケアのゲームチェンジャー。",
+            mainEffects: "衰弱した細胞への「再生・修復シグナル」の伝達、強力な抗炎症作用、コラーゲン・エラスチンの爆発的な増生、肌バリアの再構築。",
+            mechanism: "細胞が分泌する直径50〜150ナノメートルの微小なカプセルで、中にはmRNAやタンパク質が含まれています。これがターゲットとなる老化細胞に取り込まれると、遺伝子レベルで『細胞分裂・修復せよ』という指令が伝わり、肌自身の再生機能が根本から目覚めます。"
+        },
+        "pdrn": {
+            name: "PDRN（ポリデオキシリボヌクレオチド / サーモン由来）",
+            summary: "韓国発「サーモン注射」の成分。圧倒的な組織修復力を持つDNA断片。",
+            mainEffects: "クレーターやニキビ跡の組織修復、抗炎症、微小血管の新生促進、真皮層の厚み増加、ハリと弾力の回復。",
+            mechanism: "人間のDNAと95%以上一致するサーモンの精子から抽出されたDNA断片です。アデノシンA2A受容体に結合することで、炎症を引き起こす物質を抑制し、同時に線維芽細胞や血管内皮細胞の増殖を促すVascular Endothelial Growth Factor (VEGF) を分泌させ、物理的な組織再生を強力に促します。"
+        },
+        "グルタチオン": {
+            name: "グルタチオン（通称：白玉成分）",
+            summary: "高い抗酸化作用とメラニン抑制を誇る、美白ケアの超新星成分。",
+            mainEffects: "強力なメラニン生成の抑制、黒色メラニンの淡色化、活性酸素の消去、肝臓のデトックス（内服・点滴時）。",
+            mechanism: "グルタミン酸、システイン、グリシンの3つのアミノ酸からなるペプチド。メラニン合成酵素（チロシナーゼ）を阻害するだけでなく、メラニンの合成ルートを「黒色（ユーメラニン）」から「肌色（フェオメラニン）」へと強制的に切り替える働きがあり、透き通るような白玉肌を実現します。"
+        },
+        "バクチオール": {
+            name: "バクチオール",
+            summary: "マメ科の植物（オランダビユ）由来の「第2のレチノール」。",
+            mainEffects: "シワ改善、ターンオーバーの促進、抗酸化、抗菌（ニキビ予防）。レチノール特有の刺激（A反応）がありません。",
+            mechanism: "化学構造はレチノールと全く異なりますが、肌に塗布するとレチノールと同じ遺伝子（レチノイン酸受容体）に働きかけ、コラーゲンの生成を促します。紫外線に当たっても光過敏を起こさず、酸化しにくいため、朝のスキンケアにも安全に使用できる画期的な成分です。"
+        },
+        "nmn": {
+            name: "NMN（ニコチンアミドモノヌクレオチド）",
+            summary: "若返りサーチュイン遺伝子にアプローチするエイジングケアの急先鋒。",
+            mainEffects: "細胞のエネルギー代謝（ATP産生）の活性化、老化スピードの抑制、肌の弾力低下やシワの予防。",
+            mechanism: "NMNは体内でNAD+という補酵素に変換されます。NAD+は、細胞の寿命をコントロールする「サーチュイン遺伝子（長寿遺伝子）」を活性化させるスイッチの役割を果たし、ミトコンドリアの機能を若返らせて細胞レベルからの抗老化を実現します。"
+        },
+        "gabob": {
+            name: "GABOB（ガンマ-アミノ-ベータ-ヒドロキシ酪酸）",
+            summary: "能動的に肌荒れを防ぐ、2026年注目の新世代・敏感肌ケア成分。",
+            mainEffects: "過剰な神経シグナルの抑制、ストレスによる肌荒れ・赤みの事前ブロック、バリア機能の安定化。",
+            mechanism: "皮膚の知覚神経に存在するGABA受容体に作用し、摩擦や化粧品成分などの刺激によって生じる「痛い・かゆい」という電気的な異常興奮シグナルを鎮静化します。これにより、物理的なバリア修復だけでなく、神経レベルでの肌荒れループを断ち切ります。"
+        },
+        "パンテノール": {
+            name: "D-パントテニルアルコール（パンテノール / プロビタミンB5）",
+            summary: "攻め成分の刺激を和らげる「低刺激化処方」のキーマン。",
+            mainEffects: "強力な組織修復（創傷治癒）、保湿効果、抗炎症作用、レチノールなどのA反応の緩和。",
+            mechanism: "肌に吸収されるとビタミンB5（パントテン酸）に変換され、細胞の代謝に不可欠なコエンザイムAの合成を促します。これにより表皮細胞の増殖が活発になり、壊れたバリア機能が急速に修復され、水分を保持しやすい健康な角質層が形成されます。"
+        },
+        "ビタミンc": {
+            name: "ビタミンC（アスコルビン酸 / 各種誘導体）",
+            summary: "美白・毛穴・抗酸化・コラーゲン生成。全てをこなすスキンケアの絶対的王者。",
+            mainEffects: "チロシナーゼ阻害（シミ予防）、黒色メラニンの還元（シミ改善）、活性酸素の消去、皮脂分泌の抑制、コラーゲン合成の必須補酵素。",
+            mechanism: "純粋なアスコルビン酸（ピュアビタミンC）は即効性と高い効果を持ちますが不安定です。そのため、APPS（両親媒性）やVCエチル（即効型）など「誘導体」としてカプセル化・安定化され、真皮まで到達してコラーゲン繊維の架橋（結びつき）を強固にする役割を果たします。"
+        },
+        "レチノール": {
+            name: "レチノール（純粋ビタミンA）",
+            summary: "厚生労働省が「シワ改善効果」を承認している、実績No.1のエイジングケア成分。",
+            mainEffects: "表皮ターンオーバーの圧倒的加速、真皮でのヒアルロン酸・コラーゲン産生増加、シワ・たるみ・毛穴の改善。",
+            mechanism: "細胞核内の受容体に直接結合し、古い角質を強制排出させながら、真皮の線維芽細胞にコラーゲンを作るよう直接命令を出します。パルミチン酸レチノール（守りのビタミンA）から、次世代の刺激レス誘導体まで進化が続いています。"
+        },
+        "ナイアシンアミド": {
+            name: "ナイアシンアミド（ビタミンB3）",
+            summary: "シワ改善と美白のダブル認可。低刺激で扱いやすい秀才成分。",
+            mainEffects: "真皮コラーゲン生成（シワ改善）、メラノソームの転送阻害（美白）、セラミド合成促進（バリア強化）。",
+            mechanism: "シミの元（メラニン）が肌の表面の細胞へ受け渡されるプロセスを物理的にブロックします。同時に、衰えた細胞にエネルギー（NAD等）を供給し、セラミドやコラーゲンを生み出す工場の稼働率を引き上げるため、敏感肌でも安全に使えます。"
+        },
+        "セラミド": {
+            name: "セラミド（ヒト型セラミド等）",
+            summary: "水分をサンドイッチ状に挟み込んで逃がさない、最強の保湿・バリア成分。",
+            mainEffects: "圧倒的な水分保持、バリア機能の構築、外部刺激のブロック。",
+            mechanism: "角質層の細胞と細胞の間を埋める「細胞間脂質」の約50%を占めます。水と油の層が交互に重なる「ラメラ構造」を作り出し、湿度0%の環境でも水分を逃がさない強固な防壁として働きます。"
+        },
+        "ライスパワー": {
+            name: "ライスパワー®No.11 / No.11+",
+            summary: "日本が誇る発酵技術の結晶。「水分保持能改善」の唯一無二の有効成分。",
+            mainEffects: "自前のセラミド増生によるインナードライの根本改善。No.11+はシワ改善効果も。",
+            mechanism: "米のエキスを数十種類の微生物で長期間発酵させることで生まれる極小の成分。基底層まで浸透し、肌自身に「セラミドを作り出せ」という指令を出し、与える保湿ではなく「生み出す保湿（体質改善）」を実現します。"
+        },
+        "トラネキサム酸": {
+            name: "トラネキサム酸",
+            summary: "肝斑や赤みを鎮静する、優秀な抗炎症・美白有効成分。",
+            mainEffects: "肝斑の予防・改善、抗炎症作用（肌荒れ防止）、うっかり日焼けの鎮静。",
+            mechanism: "紫外線や摩擦による刺激を受けると、肌内部でプラスミンという物質が発生しメラノサイトを刺激します。トラネキサム酸はこの「抗プラスミン作用」により、シミを作れというエラー信号を初期段階で完全にシャットアウトします。"
+        },
+        "cica": {
+            name: "CICA（ツボクサエキス）",
+            summary: "「肌再生・鎮静」の王道として定着した植物成分。",
+            mainEffects: "赤みやニキビの炎症抑制、創傷治癒（傷の修復）サポート、抗酸化。",
+            mechanism: "有効成分のマデカッソシドやアジアチコシドが、炎症を引き起こすサイトカインを抑制し、同時にI型コラーゲンの合成を促すことで、ダメージを受けた組織の修復を早めます。野生のトラが傷を癒やすために擦り付けたという伝承に由来します。"
+        }
+    };
+
+    // 表記ゆれエイリアス
+    ingredientDatabase["ビタミンc誘導体"] = ingredientDatabase["ビタミンc"];
+    ingredientDatabase["白玉"] = ingredientDatabase["グルタチオン"];
+    ingredientDatabase["ツボクサエキス"] = ingredientDatabase["cica"];
+
+    // ==========================================
+    // UI・検索コントロールロジック
+    // ==========================================
+
+    function searchBySkinType() {
+        const input = document.getElementById('skintype-input').value.trim().toLowerCase();
+        const resultDiv = document.getElementById('skintype-result');
+        if (!input) return alert('肌質を入力してください。');
+        
+        let matchedData = skinTypeData.find(item => 
+            item.keywords.some(kw => input.includes(kw.toLowerCase()) || kw.toLowerCase().includes(input))
+        );
+        
+        if (matchedData) {
+            resultDiv.style.display = 'block';
+            
+            // 推奨成分のHTML生成
+            const ingredientsHtml = matchedData.ingredients.map(ing => `
+                <div class="detail-item">
+                    <div class="item-name ingredient-icon">${ing.name}</div>
+                    <div class="detail-section">
+                        <div class="detail-section-title">もたらす効果</div>
+                        <p class="detail-text">${ing.effect}</p>
+                    </div>
+                    <div class="detail-section" style="margin-top:15px;">
+                        <div class="detail-section-title">必要性・選ぶ理由</div>
+                        <p class="detail-text">${ing.reason}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // 美容医療のHTML生成
+            const treatmentsHtml = matchedData.treatments.map(trt => `
+                <div class="detail-item">
+                    <div class="item-name treatment-icon">${trt.name}</div>
+                    <div class="detail-section">
+                        <div class="detail-section-title">施術内容</div>
+                        <p class="detail-text treatment-text">${trt.content}</p>
+                    </div>
+                    <div class="detail-section" style="margin-top:15px;">
+                        <div class="detail-section-title">おすすめの理由</div>
+                        <p class="detail-text treatment-text">${trt.reason}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            resultDiv.innerHTML = `
+                <div class="result-header">
+                    <h2>【肌質診断】${matchedData.title}</h2>
+                </div>
+                <div class="skin-description">
+                    💡 <strong>特徴とケア方針：</strong><br>${matchedData.description}
+                </div>
+                <div class="section-title">✨ 推奨する美容成分</div>
+                ${ingredientsHtml}
+                <div class="section-title 守り">🏥 おすすめの美容医療</div>
+                ${treatmentsHtml}
+            `;
+        } else {
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `<p style="color:var(--accent-color); font-weight:bold; text-align:center;">該当する肌質が見つかりません。「普通肌」「乾燥肌」「脂性肌」「混合肌」「敏感肌」からお試しください。</p>`;
+        }
+    }
+
+    function searchByConcern() {
+        const input = document.getElementById('concern-input').value.trim().toLowerCase();
+        const resultDiv = document.getElementById('concern-result');
+        if (!input) return alert('キーワードを入力してください。');
+        
+        let matchedItems = concernDataMaster.filter(item => 
+            item.keywords.some(kw => input.includes(kw.toLowerCase()) || kw.toLowerCase().includes(input))
+        );
+        
+        if (matchedItems.length > 0) {
+            resultDiv.style.display = 'block';
+            let htmlContent = "";
+
+            matchedItems.forEach(matchedData => {
+                const ingredientsHtml = matchedData.ingredients.map(ing => `
+                    <div class="detail-item">
+                        <div class="item-name ingredient-icon">${ing.name}</div>
+                        <div class="detail-section">
+                            <div class="detail-section-title">主要効果とメカニズム</div>
+                            <p class="detail-text">${ing.effect}</p>
+                        </div>
+                        <div class="detail-section" style="margin-top:15px;">
+                            <div class="detail-section-title">改善の理由</div>
+                            <p class="detail-text">${ing.reason}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                const treatmentsHtml = matchedData.treatments.map(trt => `
+                    <div class="detail-item">
+                        <div class="item-name treatment-icon">${trt.name}</div>
+                        <div class="detail-section">
+                            <div class="detail-section-title">施術内容</div>
+                            <p class="detail-text treatment-text">${trt.content}</p>
+                        </div>
+                        <div class="detail-section" style="margin-top:15px;">
+                            <div class="detail-section-title">解決できる理由</div>
+                            <p class="detail-text treatment-text">${trt.reason}</p>
+                        </div>
+                    </div>
+                `).join('');
+
+                htmlContent += `
+                    <div style="margin-bottom: 50px;">
+                        <div class="result-header">
+                            <h2>【解決案】${matchedData.title}</h2>
+                        </div>
+                        <div class="section-title">✨ 推奨する美容成分</div>
+                        ${ingredientsHtml}
+                        <div class="section-title 守り">🏥 最新の美容医療アプローチ</div>
+                        ${treatmentsHtml}
+                    </div>
+                `;
+            });
+            resultDiv.innerHTML = htmlContent;
+        } else {
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `<p style="color:var(--accent-color); font-weight:bold; text-align:center;">該当するデータがありません。「クレーター」「たるみ」などを入力してください。</p>`;
+        }
+    }
+
+    function searchByIngredient() {
+        const input = document.getElementById('ingredient-input').value.trim().toLowerCase();
+        const resultDiv = document.getElementById('ingredient-result');
+        if (!input) return alert('成分名を入力してください。');
+        
+        let matchedData = null;
+        for (let key in ingredientDatabase) { 
+            if (input.includes(key) || key.includes(input)) { 
+                matchedData = ingredientDatabase[key]; 
+                break; 
+            } 
+        }
+        
+        if (matchedData) {
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <div class="result-header">
+                    <h2>【成分名】${matchedData.name}</h2>
+                    <p style="color: var(--text-muted); font-weight: bold; margin-top:5px;">${matchedData.summary}</p>
+                </div>
+                <div class="section-title">📋 主な効果・効能</div>
+                <div class="detail-item">
+                    <p class="detail-text" style="border:none; padding:0;">${matchedData.mainEffects}</p>
+                </div>
+                <div class="section-title 守り">🔬 作用メカニズム</div>
+                <div class="detail-item">
+                    <p class="detail-text treatment-text" style="border:none; padding:0;">${matchedData.mechanism}</p>
+                </div>
+            `;
+        } else { 
+            resultDiv.style.display = 'block'; 
+            resultDiv.innerHTML = `<p style="color:var(--accent-color); font-weight:bold; text-align:center;">成分が見つかりません。「エクソソーム」「PDRN」などをお試しください。</p>`; 
+        }
+    }
+
+    function switchTab(tabName) { 
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active')); 
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden')); 
+        
+        if (tabName === 'skintype') { 
+            document.querySelector('.tabs .tab-btn:nth-child(1)').classList.add('active'); 
+            document.getElementById('skintype-section').classList.remove('hidden'); 
+        } else if (tabName === 'concern') { 
+            document.querySelector('.tabs .tab-btn:nth-child(2)').classList.add('active'); 
+            document.getElementById('concern-section').classList.remove('hidden'); 
+        } else { 
+            document.querySelector('.tabs .tab-btn:nth-child(3)').classList.add('active'); 
+            document.getElementById('ingredient-section').classList.remove('hidden'); 
+        } 
+    }
+
+    function setKeyword(type, word) { 
+        document.getElementById(type + '-input').value = word; 
+        if (type === 'skintype') searchBySkinType(); 
+        else if (type === 'concern') searchByConcern(); 
+        else searchByIngredient(); 
+    }
+</script>
+</body>
+</html>
