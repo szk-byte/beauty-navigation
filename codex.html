@@ -639,7 +639,7 @@
           <h1>肌管理スマートナビ 美容成分＆美容医療の最適解</h1>
           <p class="subtitle">最新成分 × 美容医療から導く、あなただけの肌育バイブル</p>
         </div>
-        <div class="data-pill"><strong id="totalCount">1013</strong><span>登録データ</span></div>
+        <div class="data-pill"><strong id="totalCount">490</strong><span>登録データ</span></div>
       </div>
       <div class="search-row">
         <input id="query" type="search" placeholder="赤み、PDRN、ブレッシングなど">
@@ -666,6 +666,21 @@
             <option value="混合肌">混合肌</option>
             <option value="敏感肌">敏感肌</option>
           </select>
+        </div>
+        <div class="field">
+          <label>顔の部位</label>
+          <div class="chips" id="areaChips">
+            <button class="chip" data-area="全顔" type="button">全顔</button>
+            <button class="chip" data-area="額" type="button">額</button>
+            <button class="chip" data-area="眉間" type="button">眉間</button>
+            <button class="chip" data-area="目元" type="button">目元</button>
+            <button class="chip" data-area="頬" type="button">頬</button>
+            <button class="chip" data-area="鼻" type="button">鼻</button>
+            <button class="chip" data-area="口周り" type="button">口周り</button>
+            <button class="chip" data-area="あご" type="button">あご</button>
+            <button class="chip" data-area="フェイスライン" type="button">フェイスライン</button>
+            <button class="chip" data-area="首" type="button">首</button>
+          </div>
         </div>
         <div class="field">
           <label>よく使うキーワード</label>
@@ -726,8 +741,8 @@
   </div>
 
   <script>
-    const ingredientNames = ["PDRN","PN ポリヌクレオチド","リジュラン由来PN","サーモンDNA","エクソソーム","ヒト幹細胞培養上清","NMN","NAD+","グルタチオン","ビタミンC","L-アスコルビン酸","アスコルビルグルコシド","3-O-エチルアスコルビン酸","リン酸アスコルビルMg","テトラヘキシルデカン酸アスコルビル","ナイアシンアミド","セラミドNP","セラミドAP","セラミドEOP","ヒアルロン酸Na","加水分解ヒアルロン酸","アセチルヒアルロン酸Na","レチノール","レチナール","レチニルパルミテート","バクチオール","アダパレン","トレチノイン","アゼライン酸","サリチル酸","グリコール酸","乳酸","マンデル酸","リンゴ酸","クエン酸","ラクトビオン酸","グルコノラクトン","トラネキサム酸","コウジ酸","アルブチン","αアルブチン","ルシノール","4MSK","カモミラET","プラセンタエキス","フラーレン","コエンザイムQ10","ビタミンE","トコフェロール","パンテノール","アラントイン","グリチルリチン酸2K","CICA","ツボクサエキス","マデカッソシド","アシアチコシド","ヘパリン類似物質","尿素","スクワラン","ワセリン","シア脂","ホホバ油","亜鉛PCA","硫黄","過酸化ベンゾイル","ティーツリー葉油","カフェイン","カルノシン","レスベラトロール","フェルラ酸","銅ペプチド","GHK-Cu","パルミトイルトリペプチド-1","パルミトイルテトラペプチド-7","アセチルヘキサペプチド-8","EGF","FGF","KGF","チャ葉エキス","チャ葉水","チャ葉油","カミツレ花エキス","カミツレ花水","カミツレ花油","ローズマリー葉エキス","ローズマリー葉水","ローズマリー葉油","ラベンダー花エキス","ラベンダー花水","ラベンダー花油","ハトムギ種子エキス","ハトムギ種子水","ハトムギ種子油","ユズ果実エキス","ユズ果実水","ユズ果実油","アロエベラ葉エキス","アロエベラ葉水","アロエベラ葉油","カンゾウ根エキス","カンゾウ根水","カンゾウ根油","オウゴン根エキス","オウゴン根水","オウゴン根油","ドクダミエキス","ドクダミ水","ドクダミ油","ヨモギ葉エキス","ヨモギ葉水","ヨモギ葉油","シャクヤク根エキス","シャクヤク根水","シャクヤク根油","ボタン根エキス","ボタン根水","ボタン根油","ソメイヨシノ葉エキス","ソメイヨシノ葉水","ソメイヨシノ葉油","ビルベリー葉エキス","ビルベリー葉水","ビルベリー葉油","セージ葉エキス","セージ葉水","セージ葉油","タイムエキス","タイム水","タイム油","メリッサ葉エキス","メリッサ葉水","メリッサ葉油","ローズヒップエキス","ローズヒップ水","ローズヒップ油","ザクロ果実エキス","ザクロ果実水","ザクロ果実油","ブドウ果実エキス","ブドウ果実水","ブドウ果実油","リンゴ果実エキス","リンゴ果実水","リンゴ果実油","ナツメ果実エキス","ナツメ果実水","ナツメ果実油","アーチチョーク葉エキス","アーチチョーク葉水","アーチチョーク葉油","イチョウ葉エキス","イチョウ葉水","イチョウ葉油","ツバキ種子エキス","ツバキ種子水","ツバキ種子油","コメヌカエキス","コメヌカ水","コメヌカ油","ダイズ種子エキス","ダイズ種子水","ダイズ種子油","海藻エキス","海藻水","海藻油","ワカメエキス","ワカメ水","ワカメ油","マコンブエキス","マコンブ水","マコンブ油","スギナエキス","スギナ水","スギナ油","セイヨウシロヤナギ樹皮エキス","セイヨウシロヤナギ樹皮水","セイヨウシロヤナギ樹皮油","アマチャヅル葉エキス","アマチャヅル葉水","アマチャヅル葉油","クマザサ葉エキス","クマザサ葉水","クマザサ葉油","ユキノシタエキス","ユキノシタ水","ユキノシタ油","クララ根エキス","クララ根水","クララ根油","トウキ根エキス","トウキ根水","トウキ根油","ショウガ根エキス","ショウガ根水","ショウガ根油","ビワ葉エキス","ビワ葉水","ビワ葉油","パパイア果実エキス","パパイア果実水","パパイア果実油","シラカバ樹液エキス","シラカバ樹液水","シラカバ樹液油","モモ葉エキス","モモ葉水","モモ葉油","レモン果実エキス","レモン果実水","レモン果実油","ホップエキス","ホップ水","ホップ油","アルニカ花エキス","アルニカ花水","アルニカ花油","ハマメリス葉エキス","ハマメリス葉水","ハマメリス葉油","シソ葉エキス","シソ葉水","シソ葉油","ミント葉エキス","ミント葉水","ミント葉油","バラ花エキス","バラ花水","バラ花油","ジャスミン花エキス","ジャスミン花水","ジャスミン花油","ツボクサ水","ツボクサ油","モリンガ葉エキス","モリンガ葉水","モリンガ葉油","シロキクラゲエキス","シロキクラゲ水","シロキクラゲ油","真珠エキス","真珠水","真珠油","シルクエキス","シルク水","シルク油","プロポリスエキス","プロポリス水","プロポリス油","ローヤルゼリーエキス","ローヤルゼリー水","ローヤルゼリー油","蜂蜜エキス","蜂蜜水","蜂蜜油","温泉水エキス","温泉水水","温泉水油","月桃葉エキス","月桃葉水","月桃葉油","ルイボスエキス","ルイボス水","ルイボス油","アサイーエキス","アサイー水","アサイー油","クランベリーエキス","クランベリー水","クランベリー油","ラズベリーエキス","ラズベリー水","ラズベリー油","エルダーフラワーエキス","エルダーフラワー水","エルダーフラワー油","カレンデュラエキス","カレンデュラ水","カレンデュラ油","オリーブ葉エキス","オリーブ葉水","オリーブ葉油","ヒマワリ種子エキス","ヒマワリ種子水","ヒマワリ種子油","メドウフォーム種子エキス","メドウフォーム種子水","メドウフォーム種子油","酸化亜鉛","酸化チタン","ジメチコン","ポリクオタニウム-51","カルボマー","シリカ","マイカ","タルク","グリセリン","BG","DPG","プロパンジオール","エクトイン","ベタイン","トレハロース","PCA-Na","乳酸Na","リノール酸","オレイン酸","フィトスフィンゴシン","コレステロール","パルミトイルジペプチド-1","アセチルトリペプチド-2","ミリストイルテトラペプチド-3","ビオチノイルペンタペプチド-4","銅結合ヘキサペプチド-5","パルミトイルオリゴペプチド-6","アセチルジペプチド-7","ミリストイルトリペプチド-8","ビオチノイルテトラペプチド-9","銅結合ペンタペプチド-10","パルミトイルヘキサペプチド-11","アセチルオリゴペプチド-12","ミリストイルジペプチド-13","ビオチノイルトリペプチド-14","銅結合テトラペプチド-15","パルミトイルペンタペプチド-16","アセチルヘキサペプチド-17","ミリストイルオリゴペプチド-18","ビオチノイルジペプチド-19","銅結合トリペプチド-20","パルミトイルテトラペプチド-21","アセチルペンタペプチド-22","ミリストイルヘキサペプチド-23","ビオチノイルオリゴペプチド-24","銅結合ジペプチド-25","パルミトイルトリペプチド-26","アセチルテトラペプチド-27","ミリストイルペンタペプチド-28","ビオチノイルヘキサペプチド-29","銅結合オリゴペプチド-30","パルミトイルジペプチド-31","アセチルトリペプチド-32","ミリストイルテトラペプチド-33","ビオチノイルペンタペプチド-34","銅結合ヘキサペプチド-35","パルミトイルオリゴペプチド-36","アセチルジペプチド-37","ミリストイルトリペプチド-38","ビオチノイルテトラペプチド-39","銅結合ペンタペプチド-40","パルミトイルヘキサペプチド-41","アセチルオリゴペプチド-42","ミリストイルジペプチド-43","ビオチノイルトリペプチド-44","銅結合テトラペプチド-45","パルミトイルペンタペプチド-46","アセチルヘキサペプチド-47","ミリストイルオリゴペプチド-48","ビオチノイルジペプチド-49","銅結合トリペプチド-50","パルミトイルテトラペプチド-51","アセチルペンタペプチド-52","ミリストイルヘキサペプチド-53","ビオチノイルオリゴペプチド-54","銅結合ジペプチド-55","パルミトイルトリペプチド-56","アセチルテトラペプチド-57","ミリストイルペンタペプチド-58","ビオチノイルヘキサペプチド-59","銅結合オリゴペプチド-60","パルミトイルジペプチド-61","アセチルトリペプチド-62","ミリストイルテトラペプチド-63","ビオチノイルペンタペプチド-64","銅結合ヘキサペプチド-65","パルミトイルオリゴペプチド-66","アセチルジペプチド-67","ミリストイルトリペプチド-68","ビオチノイルテトラペプチド-69","銅結合ペンタペプチド-70","パルミトイルヘキサペプチド-71","アセチルオリゴペプチド-72","ミリストイルジペプチド-73","ビオチノイルトリペプチド-74","銅結合テトラペプチド-75","パルミトイルペンタペプチド-76","アセチルヘキサペプチド-77","ミリストイルオリゴペプチド-78","ビオチノイルジペプチド-79","銅結合トリペプチド-80","パルミトイルテトラペプチド-81","アセチルペンタペプチド-82","ミリストイルヘキサペプチド-83","ビオチノイルオリゴペプチド-84","銅結合ジペプチド-85","パルミトイルトリペプチド-86","アセチルテトラペプチド-87","ミリストイルペンタペプチド-88","ビオチノイルヘキサペプチド-89","銅結合オリゴペプチド-90","パルミトイルジペプチド-91","アセチルトリペプチド-92","ミリストイルテトラペプチド-93","ビオチノイルペンタペプチド-94","銅結合ヘキサペプチド-95","パルミトイルオリゴペプチド-96","アセチルジペプチド-97","ミリストイルトリペプチド-98","ビオチノイルテトラペプチド-99","銅結合ペンタペプチド-100","パルミトイルヘキサペプチド-101","アセチルオリゴペプチド-102","ミリストイルジペプチド-103","ビオチノイルトリペプチド-104","銅結合テトラペプチド-105","パルミトイルペンタペプチド-106","アセチルヘキサペプチド-107","ミリストイルオリゴペプチド-108","ビオチノイルジペプチド-109","銅結合トリペプチド-110","パルミトイルテトラペプチド-111","アセチルペンタペプチド-112","ミリストイルヘキサペプチド-113","ビオチノイルオリゴペプチド-114","銅結合ジペプチド-115","パルミトイルトリペプチド-116","アセチルテトラペプチド-117","ミリストイルペンタペプチド-118","ビオチノイルヘキサペプチド-119","銅結合オリゴペプチド-120","パルミトイルジペプチド-121","アセチルトリペプチド-122","ミリストイルテトラペプチド-123","ビオチノイルペンタペプチド-124","銅結合ヘキサペプチド-125","パルミトイルオリゴペプチド-126","アセチルジペプチド-127","ミリストイルトリペプチド-128","ビオチノイルテトラペプチド-129","銅結合ペンタペプチド-130","パルミトイルヘキサペプチド-131","アセチルオリゴペプチド-132","ミリストイルジペプチド-133","ビオチノイルトリペプチド-134","銅結合テトラペプチド-135","パルミトイルペンタペプチド-136","アセチルヘキサペプチド-137","ミリストイルオリゴペプチド-138","ビオチノイルジペプチド-139","銅結合トリペプチド-140","パルミトイルテトラペプチド-141","アセチルペンタペプチド-142","ミリストイルヘキサペプチド-143","ビオチノイルオリゴペプチド-144","銅結合ジペプチド-145","パルミトイルトリペプチド-146","アセチルテトラペプチド-147","ミリストイルペンタペプチド-148","ビオチノイルヘキサペプチド-149","銅結合オリゴペプチド-150","パルミトイルジペプチド-151","アセチルトリペプチド-152","ミリストイルテトラペプチド-153","ビオチノイルペンタペプチド-154","銅結合ヘキサペプチド-155","パルミトイルオリゴペプチド-156","アセチルジペプチド-157","ミリストイルトリペプチド-158","ビオチノイルテトラペプチド-159","銅結合ペンタペプチド-160","パルミトイルヘキサペプチド-161","アセチルオリゴペプチド-162","ミリストイルジペプチド-163","ビオチノイルトリペプチド-164","銅結合テトラペプチド-165","パルミトイルペンタペプチド-166","アセチルヘキサペプチド-167","ミリストイルオリゴペプチド-168","ビオチノイルジペプチド-169","銅結合トリペプチド-170","パルミトイルテトラペプチド-171","アセチルペンタペプチド-172","ミリストイルヘキサペプチド-173","ビオチノイルオリゴペプチド-174","銅結合ジペプチド-175","パルミトイルトリペプチド-176","アセチルテトラペプチド-177","ミリストイルペンタペプチド-178","ビオチノイルヘキサペプチド-179","銅結合オリゴペプチド-180","パルミトイルジペプチド-181","アセチルトリペプチド-182","ミリストイルテトラペプチド-183","ビオチノイルペンタペプチド-184","銅結合ヘキサペプチド-185","パルミトイルオリゴペプチド-186","アセチルジペプチド-187","ミリストイルトリペプチド-188","ビオチノイルテトラペプチド-189","銅結合ペンタペプチド-190","パルミトイルヘキサペプチド-191","アセチルオリゴペプチド-192"];
-    const procedureNames = ["ブレッシング","PDRN注射","PNスキンブースター","リジュラン","リジュランHB","リジュランi","プルリアル デンシファイ","プルリアル シルク","ジュベルック","レニスナ","スカルプトラ","プロファイロ","スネコス","ジャルプロ","ボライト","スキンバイブ","水光注射","メソガン","ポテンツァ","シルファームX","モフィウス8","イントラセル","エリシスセンス","シークレットRF","ダーマペン4","ヴェルベットスキン","トライフィルプロ","サブシジョン","TCAクロス","フラクショナルCO2レーザー","ピコフラクショナル","ピコトーニング","ピコスポット","ピコSure","ピコWay","エンライトン","QスイッチYAG","ルビーレーザー","アレキサンドライトレーザー","IPL","フォトフェイシャルM22","ルメッカ","BBL","ライムライト","セレックV","ノーリス","Vビーム","ジェネシス","ハイドラフェイシャル","ハイドラジェントル","アクアピール","ケミカルピーリング","サリチル酸マクロゴールピーリング","マッサージピール","ミラノリピール","リバースピール","エレクトロポレーション","ケアシス","メソナJ","イオン導入","ハイフ","ウルトラセルQプラス","ウルセラ","ソノクイーン","サーマクール","ボルニューマ","オリジオ","デンシティ","インモード","チタニウムリフト","LED治療","ボトックス","マイクロボトックス","ヒアルロン酸注入","ベビーコラーゲン注射","PRP","PRF","ACRS","PicoOne スキンブースター","PicoPro ニードルRF","PicoMax ピコレーザー","PicoPlus フラクショナルレーザー","PicoX 光治療","PicoS 導入治療","PicoFX ピーリング","PicoLift タイトニング","PicoGlow 肌育注入","PicoTone 毛穴治療","PicoGenesis スキンブースター","PicoMatrix ニードルRF","PicoNeedle ピコレーザー","PicoBooster フラクショナルレーザー","PicoWave 光治療","PicoPulse 導入治療","PicoPrime ピーリング","PicoActive タイトニング","PicoDuo 肌育注入","PicoCare 毛穴治療","PicoSilk スキンブースター","PicoNova ニードルRF","PicoMuse ピコレーザー","PicoBloom フラクショナルレーザー","DermaOne 光治療","DermaPro 導入治療","DermaMax ピーリング","DermaPlus タイトニング","DermaX 肌育注入","DermaS 毛穴治療","DermaFX スキンブースター","DermaLift ニードルRF","DermaGlow ピコレーザー","DermaTone フラクショナルレーザー","DermaGenesis 光治療","DermaMatrix 導入治療","DermaNeedle ピーリング","DermaBooster タイトニング","DermaWave 肌育注入","DermaPulse 毛穴治療","DermaPrime スキンブースター","DermaActive ニードルRF","DermaDuo ピコレーザー","DermaCare フラクショナルレーザー","DermaSilk 光治療","DermaNova 導入治療","DermaMuse ピーリング","DermaBloom タイトニング","AquaOne 肌育注入","AquaPro 毛穴治療","AquaMax スキンブースター","AquaPlus ニードルRF","AquaX ピコレーザー","AquaS フラクショナルレーザー","AquaFX 光治療","AquaLift 導入治療","AquaGlow ピーリング","AquaTone タイトニング","AquaGenesis 肌育注入","AquaMatrix 毛穴治療","AquaNeedle スキンブースター","AquaBooster ニードルRF","AquaWave ピコレーザー","AquaPulse フラクショナルレーザー","AquaPrime 光治療","AquaActive 導入治療","AquaDuo ピーリング","AquaCare タイトニング","AquaSilk 肌育注入","AquaNova 毛穴治療","AquaMuse スキンブースター","AquaBloom ニードルRF","LaseOne ピコレーザー","LasePro フラクショナルレーザー","LaseMax 光治療","LasePlus 導入治療","LaseX ピーリング","LaseS タイトニング","LaseFX 肌育注入","LaseLift 毛穴治療","LaseGlow スキンブースター","LaseTone ニードルRF","LaseGenesis ピコレーザー","LaseMatrix フラクショナルレーザー","LaseNeedle 光治療","LaseBooster 導入治療","LaseWave ピーリング","LasePulse タイトニング","LasePrime 肌育注入","LaseActive 毛穴治療","LaseDuo スキンブースター","LaseCare ニードルRF","LaseSilk ピコレーザー","LaseNova フラクショナルレーザー","LaseMuse 光治療","LaseBloom 導入治療","RFOne ピーリング","RFPro タイトニング","RFMax 肌育注入","RFPlus 毛穴治療","RFX スキンブースター","RFS ニードルRF","RFFX ピコレーザー","RFLift フラクショナルレーザー","RFGlow 光治療","RFTone 導入治療","RFGenesis ピーリング","RFMatrix タイトニング","RFNeedle 肌育注入","RFBooster 毛穴治療","RFWave スキンブースター","RFPulse ニードルRF","RFPrime ピコレーザー","RFActive フラクショナルレーザー","RFDuo 光治療","RFCare 導入治療","RFSilk ピーリング","RFNova タイトニング","RFMuse 肌育注入","RFBloom 毛穴治療","SonoOne スキンブースター","SonoPro ニードルRF","SonoMax ピコレーザー","SonoPlus フラクショナルレーザー","SonoX 光治療","SonoS 導入治療","SonoFX ピーリング","SonoLift タイトニング","SonoGlow 肌育注入","SonoTone 毛穴治療","SonoGenesis スキンブースター","SonoMatrix ニードルRF","SonoNeedle ピコレーザー","SonoBooster フラクショナルレーザー","SonoWave 光治療","SonoPulse 導入治療","SonoPrime ピーリング","SonoActive タイトニング","SonoDuo 肌育注入","SonoCare 毛穴治療","SonoSilk スキンブースター","SonoNova ニードルRF","SonoMuse ピコレーザー","SonoBloom フラクショナルレーザー","UltraOne 光治療","UltraPro 導入治療","UltraMax ピーリング","UltraPlus タイトニング","UltraX 肌育注入","UltraS 毛穴治療","UltraFX スキンブースター","UltraLift ニードルRF","UltraGlow ピコレーザー","UltraTone フラクショナルレーザー","UltraGenesis 光治療","UltraMatrix 導入治療","UltraNeedle ピーリング","UltraBooster タイトニング","UltraWave 肌育注入","UltraPulse 毛穴治療","UltraPrime スキンブースター","UltraActive ニードルRF","UltraDuo ピコレーザー","UltraCare フラクショナルレーザー","UltraSilk 光治療","UltraNova 導入治療","UltraMuse ピーリング","UltraBloom タイトニング","HydraOne 肌育注入","HydraPro 毛穴治療","HydraMax スキンブースター","HydraPlus ニードルRF","HydraX ピコレーザー","HydraS フラクショナルレーザー","HydraFX 光治療","HydraLift 導入治療","HydraGlow ピーリング","HydraTone タイトニング","HydraGenesis 肌育注入","HydraMatrix 毛穴治療","HydraNeedle スキンブースター","HydraBooster ニードルRF","HydraWave ピコレーザー","HydraPulse フラクショナルレーザー","HydraPrime 光治療","HydraActive 導入治療","HydraDuo ピーリング","HydraCare タイトニング","HydraSilk 肌育注入","HydraNova 毛穴治療","HydraMuse スキンブースター","HydraBloom ニードルRF","ClearOne ピコレーザー","ClearPro フラクショナルレーザー","ClearMax 光治療","ClearPlus 導入治療","ClearX ピーリング","ClearS タイトニング","ClearFX 肌育注入","ClearLift 毛穴治療","ClearGlow スキンブースター","ClearTone ニードルRF","ClearGenesis ピコレーザー","ClearMatrix フラクショナルレーザー","ClearNeedle 光治療","ClearBooster 導入治療","ClearWave ピーリング","ClearPulse タイトニング","ClearPrime 肌育注入","ClearActive 毛穴治療","ClearDuo スキンブースター","ClearCare ニードルRF","ClearSilk ピコレーザー","ClearNova フラクショナルレーザー","ClearMuse 光治療","ClearBloom 導入治療","LumiOne ピーリング","LumiPro タイトニング","LumiMax 肌育注入","LumiPlus 毛穴治療","LumiX スキンブースター","LumiS ニードルRF","LumiFX ピコレーザー","LumiLift フラクショナルレーザー","LumiGlow 光治療","LumiTone 導入治療","LumiGenesis ピーリング","LumiMatrix タイトニング","LumiNeedle 肌育注入","LumiBooster 毛穴治療","LumiWave スキンブースター","LumiPulse ニードルRF","LumiPrime ピコレーザー","LumiActive フラクショナルレーザー","LumiDuo 光治療","LumiCare 導入治療","LumiSilk ピーリング","LumiNova タイトニング","LumiMuse 肌育注入","LumiBloom 毛穴治療","RejuOne スキンブースター","RejuPro ニードルRF","RejuMax ピコレーザー","RejuPlus フラクショナルレーザー","RejuX 光治療","RejuS 導入治療","RejuFX ピーリング","RejuLift タイトニング","RejuGlow 肌育注入","RejuTone 毛穴治療","RejuGenesis スキンブースター","RejuMatrix ニードルRF","RejuNeedle ピコレーザー","RejuBooster フラクショナルレーザー","RejuWave 光治療","RejuPulse 導入治療","RejuPrime ピーリング","RejuActive タイトニング","RejuDuo 肌育注入","RejuCare 毛穴治療","RejuSilk スキンブースター","RejuNova ニードルRF","RejuMuse ピコレーザー","RejuBloom フラクショナルレーザー","SkinOne 光治療","SkinPro 導入治療","SkinMax ピーリング","SkinPlus タイトニング","SkinX 肌育注入","SkinS 毛穴治療","SkinFX スキンブースター","SkinLift ニードルRF","SkinGlow ピコレーザー","SkinTone フラクショナルレーザー","SkinGenesis 光治療","SkinMatrix 導入治療","SkinNeedle ピーリング","SkinBooster タイトニング","SkinWave 肌育注入","SkinPulse 毛穴治療","SkinPrime スキンブースター","SkinActive ニードルRF","SkinDuo ピコレーザー","SkinCare フラクショナルレーザー","SkinSilk 光治療","SkinNova 導入治療","SkinMuse ピーリング","SkinBloom タイトニング","NeoOne 肌育注入","NeoPro 毛穴治療","NeoMax スキンブースター","NeoPlus ニードルRF","NeoX ピコレーザー","NeoS フラクショナルレーザー","NeoFX 光治療","NeoLift 導入治療","NeoGlow ピーリング","NeoTone タイトニング","NeoGenesis 肌育注入","NeoMatrix 毛穴治療","NeoNeedle スキンブースター","NeoBooster ニードルRF","NeoWave ピコレーザー","NeoPulse フラクショナルレーザー","NeoPrime 光治療","NeoActive 導入治療","NeoDuo ピーリング","NeoCare タイトニング","NeoSilk 肌育注入","NeoNova 毛穴治療","NeoMuse スキンブースター","NeoBloom ニードルRF","CellOne ピコレーザー","CellPro フラクショナルレーザー","CellMax 光治療","CellPlus 導入治療","CellX ピーリング","CellS タイトニング","CellFX 肌育注入","CellLift 毛穴治療","CellGlow スキンブースター","CellTone ニードルRF","CellGenesis ピコレーザー","CellMatrix フラクショナルレーザー","CellNeedle 光治療","CellBooster 導入治療","CellWave ピーリング","CellPulse タイトニング","CellPrime 肌育注入","CellActive 毛穴治療","CellDuo スキンブースター","CellCare ニードルRF","CellSilk ピコレーザー","CellNova フラクショナルレーザー","CellMuse 光治療","CellBloom 導入治療","VitaOne ピーリング","VitaPro タイトニング","VitaMax 肌育注入","VitaPlus 毛穴治療","VitaX スキンブースター","VitaS ニードルRF","VitaFX ピコレーザー","VitaLift フラクショナルレーザー","VitaGlow 光治療","VitaTone 導入治療","VitaGenesis ピーリング","VitaMatrix タイトニング","VitaNeedle 肌育注入","VitaBooster 毛穴治療","VitaWave スキンブースター","VitaPulse ニードルRF","VitaPrime ピコレーザー","VitaActive フラクショナルレーザー","VitaDuo 光治療","VitaCare 導入治療","VitaSilk ピーリング","VitaNova タイトニング","VitaMuse 肌育注入","VitaBloom 毛穴治療","MesoOne スキンブースター","MesoPro ニードルRF","MesoMax ピコレーザー","MesoPlus フラクショナルレーザー","MesoX 光治療","MesoS 導入治療","MesoFX ピーリング","MesoLift タイトニング","MesoGlow 肌育注入","MesoTone 毛穴治療","MesoGenesis スキンブースター","MesoMatrix ニードルRF","MesoNeedle ピコレーザー","MesoBooster フラクショナルレーザー","MesoWave 光治療","MesoPulse 導入治療","MesoPrime ピーリング","MesoActive タイトニング","MesoDuo 肌育注入","MesoCare 毛穴治療","MesoSilk スキンブースター","MesoNova ニードルRF","MesoMuse ピコレーザー","MesoBloom フラクショナルレーザー","BioOne 光治療","BioPro 導入治療","BioMax ピーリング","BioPlus タイトニング","BioX 肌育注入","BioS 毛穴治療","BioFX スキンブースター","BioLift ニードルRF","BioGlow ピコレーザー","BioTone フラクショナルレーザー","BioGenesis 光治療","BioMatrix 導入治療","BioNeedle ピーリング","BioBooster タイトニング","BioWave 肌育注入","BioPulse 毛穴治療","BioPrime スキンブースター","BioActive ニードルRF","BioDuo ピコレーザー","BioCare フラクショナルレーザー","BioSilk 光治療","BioNova 導入治療","BioMuse ピーリング","BioBloom タイトニング","NucleoOne 肌育注入","NucleoPro 毛穴治療","NucleoMax スキンブースター","NucleoPlus ニードルRF","NucleoX ピコレーザー","NucleoS フラクショナルレーザー","NucleoFX 光治療","NucleoLift 導入治療","NucleoGlow ピーリング","NucleoTone タイトニング","NucleoGenesis 肌育注入","NucleoMatrix 毛穴治療","NucleoNeedle スキンブースター","NucleoBooster ニードルRF"];
+    const ingredientNames = ["PDRN","PN ポリヌクレオチド","リジュラン由来PN","サーモンDNA","エクソソーム","ヒト幹細胞培養上清","NMN","NAD+","グルタチオン","ビタミンC","L-アスコルビン酸","アスコルビルグルコシド","3-O-エチルアスコルビン酸","リン酸アスコルビルMg","テトラヘキシルデカン酸アスコルビル","ナイアシンアミド","セラミドNP","セラミドAP","セラミドEOP","ヒアルロン酸Na","加水分解ヒアルロン酸","アセチルヒアルロン酸Na","レチノール","レチナール","レチニルパルミテート","バクチオール","アダパレン","トレチノイン","アゼライン酸","サリチル酸","グリコール酸","乳酸","マンデル酸","リンゴ酸","クエン酸","ラクトビオン酸","グルコノラクトン","トラネキサム酸","コウジ酸","アルブチン","αアルブチン","ルシノール","4MSK","カモミラET","プラセンタエキス","フラーレン","コエンザイムQ10","ビタミンE","トコフェロール","パンテノール","アラントイン","グリチルリチン酸2K","CICA","ツボクサエキス","マデカッソシド","アシアチコシド","ヘパリン類似物質","尿素","スクワラン","ワセリン","シア脂","ホホバ油","亜鉛PCA","硫黄","過酸化ベンゾイル","ティーツリー葉油","カフェイン","カルノシン","レスベラトロール","フェルラ酸","銅ペプチド","GHK-Cu","パルミトイルトリペプチド-1","パルミトイルテトラペプチド-7","アセチルヘキサペプチド-8","EGF","FGF","KGF","チャ葉エキス","チャ葉水","チャ葉油","カミツレ花エキス","カミツレ花水","カミツレ花油","ローズマリー葉エキス","ローズマリー葉水","ローズマリー葉油","ラベンダー花エキス","ラベンダー花水","ラベンダー花油","ハトムギ種子エキス","ハトムギ種子水","ハトムギ種子油","ユズ果実エキス","ユズ果実水","ユズ果実油","アロエベラ葉エキス","アロエベラ葉水","アロエベラ葉油","カンゾウ根エキス","カンゾウ根水","カンゾウ根油","オウゴン根エキス","オウゴン根水","オウゴン根油","ドクダミエキス","ドクダミ水","ドクダミ油","ヨモギ葉エキス","ヨモギ葉水","ヨモギ葉油","シャクヤク根エキス","シャクヤク根水","シャクヤク根油","ボタン根エキス","ボタン根水","ボタン根油","ソメイヨシノ葉エキス","ソメイヨシノ葉水","ソメイヨシノ葉油","ビルベリー葉エキス","ビルベリー葉水","ビルベリー葉油","セージ葉エキス","セージ葉水","セージ葉油","タイムエキス","タイム水","タイム油","メリッサ葉エキス","メリッサ葉水","メリッサ葉油","ローズヒップエキス","ローズヒップ水","ローズヒップ油","ザクロ果実エキス","ザクロ果実水","ザクロ果実油","ブドウ果実エキス","ブドウ果実水","ブドウ果実油","リンゴ果実エキス","リンゴ果実水","リンゴ果実油","ナツメ果実エキス","ナツメ果実水","ナツメ果実油","アーチチョーク葉エキス","アーチチョーク葉水","アーチチョーク葉油","イチョウ葉エキス","イチョウ葉水","イチョウ葉油","ツバキ種子エキス","ツバキ種子水","ツバキ種子油","コメヌカエキス","コメヌカ水","コメヌカ油","ダイズ種子エキス","ダイズ種子水","ダイズ種子油","海藻エキス","海藻水","海藻油","ワカメエキス","ワカメ水","ワカメ油","マコンブエキス","マコンブ水","マコンブ油","スギナエキス","スギナ水","スギナ油","セイヨウシロヤナギ樹皮エキス","セイヨウシロヤナギ樹皮水","セイヨウシロヤナギ樹皮油","アマチャヅル葉エキス","アマチャヅル葉水","アマチャヅル葉油","クマザサ葉エキス","クマザサ葉水","クマザサ葉油","ユキノシタエキス","ユキノシタ水","ユキノシタ油","クララ根エキス","クララ根水","クララ根油","トウキ根エキス","トウキ根水","トウキ根油","ショウガ根エキス","ショウガ根水","ショウガ根油","ビワ葉エキス","ビワ葉水","ビワ葉油","パパイア果実エキス","パパイア果実水","パパイア果実油","シラカバ樹液エキス","シラカバ樹液水","シラカバ樹液油","モモ葉エキス","モモ葉水","モモ葉油","レモン果実エキス","レモン果実水","レモン果実油","ホップエキス","ホップ水","ホップ油","アルニカ花エキス","アルニカ花水","アルニカ花油","ハマメリス葉エキス","ハマメリス葉水","ハマメリス葉油","シソ葉エキス","シソ葉水","シソ葉油","ミント葉エキス","ミント葉水","ミント葉油","バラ花エキス","バラ花水","バラ花油","ジャスミン花エキス","ジャスミン花水","ジャスミン花油","ツボクサ水","ツボクサ油","モリンガ葉エキス","モリンガ葉水","モリンガ葉油","シロキクラゲエキス","シロキクラゲ水","シロキクラゲ油","真珠エキス","真珠水","真珠油","シルクエキス","シルク水","シルク油","プロポリスエキス","プロポリス水","プロポリス油","ローヤルゼリーエキス","ローヤルゼリー水","ローヤルゼリー油","蜂蜜エキス","蜂蜜水","蜂蜜油","温泉水エキス","温泉水水","温泉水油","月桃葉エキス","月桃葉水","月桃葉油","ルイボスエキス","ルイボス水","ルイボス油","アサイーエキス","アサイー水","アサイー油","クランベリーエキス","クランベリー水","クランベリー油","ラズベリーエキス","ラズベリー水","ラズベリー油","エルダーフラワーエキス","エルダーフラワー水","エルダーフラワー油","カレンデュラエキス","カレンデュラ水","カレンデュラ油","オリーブ葉エキス","オリーブ葉水","オリーブ葉油","ヒマワリ種子エキス","ヒマワリ種子水","ヒマワリ種子油","メドウフォーム種子エキス","メドウフォーム種子水","メドウフォーム種子油","酸化亜鉛","酸化チタン","ジメチコン","ポリクオタニウム-51","カルボマー","シリカ","マイカ","タルク","グリセリン","BG","DPG","プロパンジオール","エクトイン","ベタイン","トレハロース","PCA-Na","乳酸Na","リノール酸","オレイン酸","フィトスフィンゴシン","コレステロール","パルミトイルジペプチド-1","アセチルトリペプチド-2","ミリストイルテトラペプチド-3","ビオチノイルペンタペプチド-4","銅結合ヘキサペプチド-5","パルミトイルオリゴペプチド-6","アセチルジペプチド-7","ミリストイルトリペプチド-8","ビオチノイルテトラペプチド-9","銅結合ペンタペプチド-10","パルミトイルヘキサペプチド-11","アセチルオリゴペプチド-12","ミリストイルジペプチド-13","ビオチノイルトリペプチド-14","銅結合テトラペプチド-15","パルミトイルペンタペプチド-16","アセチルヘキサペプチド-17","ミリストイルオリゴペプチド-18","ビオチノイルジペプチド-19","銅結合トリペプチド-20","パルミトイルテトラペプチド-21","アセチルペンタペプチド-22","ミリストイルヘキサペプチド-23","ビオチノイルオリゴペプチド-24","銅結合ジペプチド-25","パルミトイルトリペプチド-26","アセチルテトラペプチド-27","ミリストイルペンタペプチド-28","ビオチノイルヘキサペプチド-29","銅結合オリゴペプチド-30","パルミトイルジペプチド-31","アセチルトリペプチド-32","ミリストイルテトラペプチド-33","ビオチノイルペンタペプチド-34","銅結合ヘキサペプチド-35","パルミトイルオリゴペプチド-36","アセチルジペプチド-37","ミリストイルトリペプチド-38","ビオチノイルテトラペプチド-39","銅結合ペンタペプチド-40","パルミトイルヘキサペプチド-41","アセチルオリゴペプチド-42","ミリストイルジペプチド-43","ビオチノイルトリペプチド-44","銅結合テトラペプチド-45","パルミトイルペンタペプチド-46","アセチルヘキサペプチド-47","ミリストイルオリゴペプチド-48","ビオチノイルジペプチド-49","銅結合トリペプチド-50","パルミトイルテトラペプチド-51","アセチルペンタペプチド-52","ミリストイルヘキサペプチド-53","ビオチノイルオリゴペプチド-54","銅結合ジペプチド-55","パルミトイルトリペプチド-56","アセチルテトラペプチド-57","ミリストイルペンタペプチド-58","ビオチノイルヘキサペプチド-59","銅結合オリゴペプチド-60","パルミトイルジペプチド-61","アセチルトリペプチド-62","ミリストイルテトラペプチド-63","ビオチノイルペンタペプチド-64","銅結合ヘキサペプチド-65","パルミトイルオリゴペプチド-66","アセチルジペプチド-67","ミリストイルトリペプチド-68","ビオチノイルテトラペプチド-69","銅結合ペンタペプチド-70","パルミトイルヘキサペプチド-71","アセチルオリゴペプチド-72","ミリストイルジペプチド-73","ビオチノイルトリペプチド-74","銅結合テトラペプチド-75","パルミトイルペンタペプチド-76","アセチルヘキサペプチド-77","ミリストイルオリゴペプチド-78","ビオチノイルジペプチド-79","銅結合トリペプチド-80"];
+    const procedureNames = ["IPL","光治療","フォト治療","血管レーザー","色素レーザー","ピコレーザー","Qスイッチレーザー","ロングパルスレーザー","レーザーフェイシャル","ピコトーニング","ピコスポット","ピコフラクショナル","フラクショナルレーザー","フラクショナルCO2レーザー","エルビウムYAGレーザー","マイクロニードルRF","ニードルRF","RFタイトニング","高周波治療","モノポーラRF","バイポーラRF","HIFU","超音波タイトニング","水光注射","スキンブースター","PN注入","PDRN注入","ポリヌクレオチド注入","PDLLA注入","PLLA注入","非架橋ヒアルロン酸注入","アミノ酸スキンブースター","ボライト系スキンブースター","プロファイロ系注入","ジュベルック系注入","リジュラン系注入","スネコス系注入","メソセラピー","メソガン","手打ち注入","カニューレ注入","浅層注入","真皮注入","マイクロボトックス","ボトックス注射","ヒアルロン酸注入","コラーゲン注入","ベビーコラーゲン注入","PRP","PRF","ACRS","エクソソーム導入","幹細胞培養上清導入","ダーマペン","マイクロニードリング","ヴェルベットスキン","サブシジョン","TCAクロス","パンチ切除","瘢痕剥離","ニキビ跡治療","ケミカルピーリング","サリチル酸ピーリング","グリコール酸ピーリング","乳酸ピーリング","マンデル酸ピーリング","マッサージピール","ミラノリピール","リバースピール","コラーゲンピール","レチノールピール","ハイドラフェイシャル","アクアピーリング","毛穴吸引","エレクトロポレーション","イオン導入","超音波導入","クライオ導入","メソポレーション","LED治療","青色LED","赤色LED","白玉点滴","高濃度ビタミンC点滴","グルタチオン点滴","プラセンタ注射","内服併用治療","外用薬併用治療","トラネキサム酸導入"];
 
     const categories = [
       { id: "all", label: "すべて" },
@@ -821,7 +836,7 @@
       skin: ["普通肌", "乾燥肌", "脂性肌", "混合肌", "敏感肌"],
       concern: concerns.map(item => item.name),
       ingredient: ["PDRN", "ナイアシンアミド", "ビタミンC", "セラミドNP", "レチノール", "アゼライン酸", "トラネキサム酸", "ペプチド"],
-      procedure: ["ブレッシング", "ポテンツァ", "ジュベルック", "リジュラン", "ピコレーザー", "IPL", "ダーマペン4", "ハイフ"]
+      procedure: ["IPL", "ピコレーザー", "マイクロニードルRF", "スキンブースター", "PN注入", "PDLLA注入", "ダーマペン", "HIFU"]
     };
 
     const concernAliasWords = {
@@ -835,12 +850,26 @@
       "たるみ": ["たるみ", "ハリ", "弾力", "フェイスライン", "レチ", "ペプチド", "ビタミンC", "ナイアシン", "PDRN", "PN", "ハイフ", "RF"]
     };
 
-    const state = { category: "all", query: "", skin: "", quick: "", selectedConcerns: [], sort: "relevance" };
+    const areaAliasWords = {
+      "全顔": ["肌質", "くすみ", "毛穴", "赤み", "乾燥", "IPL", "ピコ", "導入", "PDRN", "ナイアシン"],
+      "額": ["額", "皮脂", "ニキビ", "毛穴", "しわ", "ボトックス", "ピーリング", "アゼライン", "サリチル", "ナイアシン"],
+      "眉間": ["眉間", "しわ", "表情じわ", "ボトックス", "レチ", "ペプチド", "ヒアルロン"],
+      "目元": ["目元", "小じわ", "乾燥", "くま", "たるみ", "リジュラン", "スネコス", "PDRN", "ヒアルロン", "ペプチド"],
+      "頬": ["頬", "赤み", "毛穴", "シミ", "くすみ", "クレーター", "IPL", "Vビーム", "ポテンツァ", "ジュベルック", "ビタミンC"],
+      "鼻": ["鼻", "毛穴", "角栓", "皮脂", "黒ずみ", "ハイドラ", "ピーリング", "サリチル", "アゼライン", "ナイアシン"],
+      "口周り": ["口周り", "乾燥", "ほうれい線", "たるみ", "小じわ", "ヒアルロン", "リジュラン", "セラミド", "ペプチド"],
+      "あご": ["あご", "ニキビ", "皮脂", "毛穴", "炎症", "ピーリング", "LED", "アゼライン", "サリチル", "グリチル"],
+      "フェイスライン": ["フェイスライン", "たるみ", "ハリ", "脂肪", "ハイフ", "インモード", "ボルニューマ", "RF", "レチ", "ペプチド"],
+      "首": ["首", "しわ", "たるみ", "乾燥", "ハリ", "スネコス", "リジュラン", "ハイフ", "ペプチド", "レチ"]
+    };
+
+    const state = { category: "all", query: "", skin: "", area: "", quick: "", selectedConcerns: [], sort: "relevance" };
     const el = {
       tabs: document.querySelector("#tabs"),
       query: document.querySelector("#query"),
       clearSearch: document.querySelector("#clearSearch"),
       skinSelect: document.querySelector("#skinSelect"),
+      areaChips: document.querySelector("#areaChips"),
       quickChips: document.querySelector("#quickChips"),
       concernChips: document.querySelector("#concernChips"),
       resetAll: document.querySelector("#resetAll"),
@@ -862,6 +891,7 @@
       el.totalCount.textContent = data.length;
       renderTabs();
       renderSkinOptions();
+      renderAreaChips();
       renderQuickChips();
       renderConcernChips();
       bind();
@@ -880,6 +910,12 @@
 
     function renderQuickChips() {
       el.quickChips.innerHTML = getQuickWords().map(word => `<button class="chip ${word === state.quick ? "active" : ""}" data-word="${escapeHtml(word)}" type="button">${word}</button>`).join("");
+    }
+
+    function renderAreaChips() {
+      el.areaChips.querySelectorAll("[data-area]").forEach(button => {
+        button.classList.toggle("active", button.dataset.area === state.area);
+      });
     }
 
     function renderConcernChips() {
@@ -918,6 +954,14 @@
         render();
       });
 
+      el.areaChips.addEventListener("click", event => {
+        const button = event.target.closest("[data-area]");
+        if (!button) return;
+        state.area = state.area === button.dataset.area ? "" : button.dataset.area;
+        renderAreaChips();
+        render();
+      });
+
       el.query.addEventListener("input", event => {
         state.query = event.target.value.trim();
         state.quick = getQuickWords().includes(state.query) ? state.query : "";
@@ -944,11 +988,12 @@
       });
 
       el.resetAll.addEventListener("click", () => {
-        Object.assign(state, { category: "all", query: "", skin: "", quick: "", selectedConcerns: [], sort: "relevance" });
+        Object.assign(state, { category: "all", query: "", skin: "", area: "", quick: "", selectedConcerns: [], sort: "relevance" });
         el.query.value = "";
         el.skinSelect.value = "";
         el.sortSelect.value = "relevance";
         renderTabs();
+        renderAreaChips();
         renderQuickChips();
         renderConcernChips();
         render();
@@ -986,15 +1031,29 @@
       if (state.category !== "all") items = items.filter(item => item.kind === state.category);
       if (query) items = items.filter(item => item.score > 0);
       if (state.skin) {
-        const skinWord = normalize(state.skin);
-        items = items.filter(item => item.kind === "skin" ? item.name === state.skin : normalize(item.searchable).includes(skinWord) || normalize((item.tags || []).join(" ")).includes(skinWord) || item.kind === "ingredient" || item.kind === "procedure");
+        const skinTerms = getSkinSearchTerms(state.skin);
+        items = items.filter(item => item.kind === "skin" ? item.name === state.skin : matchesAnyTerm(item, skinTerms));
       }
       return sortItems(items);
     }
 
+    function getSkinSearchTerms(skinName) {
+      const skin = skinTypes.find(item => item.name === skinName);
+      return [skinName, ...(skin?.tags || []), skin?.care, skin?.procedures]
+        .filter(Boolean)
+        .join(" ")
+        .split(/[、\s]+/)
+        .filter(term => term.length > 1);
+    }
+
+    function matchesAnyTerm(item, terms) {
+      const text = normalize([item.name, item.summary, item.goodFor, item.care, item.procedures, item.features, ...(item.tags || [])].join(" "));
+      return terms.some(term => text.includes(normalize(term)));
+    }
+
     function buildSearchQuery() {
-      const terms = [state.query, ...state.selectedConcerns];
-      const expanded = terms.flatMap(term => [term, ...(concernAliasWords[term] || [])]);
+      const terms = [state.query, ...state.selectedConcerns, state.area];
+      const expanded = terms.flatMap(term => [term, ...(concernAliasWords[term] || []), ...(areaAliasWords[term] || [])]);
       return normalize(expanded.join(" "));
     }
 
@@ -1022,21 +1081,21 @@
 
     function render() {
       const items = getFiltered();
-      const labels = [state.query, ...state.selectedConcerns, state.skin, state.category !== "all" ? categories.find(c => c.id === state.category).label : ""].filter(Boolean);
+      const labels = [state.query, ...state.selectedConcerns, state.area, state.skin, state.category !== "all" ? categories.find(c => c.id === state.category).label : ""].filter(Boolean);
       el.resultTitle.textContent = labels.length ? `${labels.join(" / ")} の検索結果` : "すべての候補";
       el.resultSubtitle.textContent = `${items.length}件を表示中`;
       renderPlan();
-      el.results.innerHTML = items.length ? items.slice(0, 80).map(renderCard).join("") : `<div class="empty">該当候補がありません。${renderExternalSearch(state.query || state.selectedConcerns.join(" ") || "美容 成分 施術")}</div>`;
+      el.results.innerHTML = items.length ? items.map(renderCard).join("") : `<div class="empty">該当候補がありません。${renderExternalSearch(state.query || state.selectedConcerns.join(" ") || "美容 成分 施術")}</div>`;
     }
 
     function getDisplayFocusTerms() {
-      return [...state.selectedConcerns, state.query, state.skin].filter(Boolean);
+      return [...state.selectedConcerns, state.area, state.query, state.skin].filter(Boolean);
     }
 
     function getFocusTerms() {
-      return [...state.selectedConcerns, state.query, state.skin]
+      return [...state.selectedConcerns, state.area, state.query, state.skin]
         .filter(Boolean)
-        .flatMap(term => [term, ...(concernAliasWords[term] || [])]);
+        .flatMap(term => [term, ...(concernAliasWords[term] || []), ...(areaAliasWords[term] || [])]);
     }
 
     function getSkinPatterns() {
