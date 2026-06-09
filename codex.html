@@ -1029,6 +1029,10 @@
       el.results.innerHTML = items.length ? items.slice(0, 80).map(renderCard).join("") : `<div class="empty">該当候補がありません。${renderExternalSearch(state.query || state.selectedConcerns.join(" ") || "美容 成分 施術")}</div>`;
     }
 
+    function getDisplayFocusTerms() {
+      return [...state.selectedConcerns, state.query, state.skin].filter(Boolean);
+    }
+
     function getFocusTerms() {
       return [...state.selectedConcerns, state.query, state.skin]
         .filter(Boolean)
@@ -1097,10 +1101,11 @@
         ["維持ケア", "次の施術まで肌状態をキープ", "施術後は乾燥、摩擦、炎症、紫外線を抑えながら目的成分を継続します。", /導入|LED|ケアシス|メソナ|水光|スキンブースター|IPL/, /酸化亜鉛|酸化チタン|ビタミンC|ナイアシン|トラネキサム|セラミド|ヒアルロン|パンテノール/]
       ];
       const focus = getFocusTerms();
+      const displayFocus = getDisplayFocusTerms();
       el.planPanel.innerHTML = `
         <details open>
           <summary class="plan-main">
-            <div><h2>おすすめ順</h2><span>${focus.length ? focus.join(" + ") : "肌質・悩みを選ぶと候補が変わります"}</span></div>
+            <div><h2>おすすめ順</h2><span>${displayFocus.length ? displayFocus.join(" + ") : "肌質・悩みを選ぶと候補が変わります"}</span></div>
             <span class="chev">›</span>
           </summary>
           <div class="steps">
