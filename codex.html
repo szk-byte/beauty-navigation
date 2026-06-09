@@ -824,6 +824,17 @@
       procedure: ["ブレッシング", "ポテンツァ", "ジュベルック", "リジュラン", "ピコレーザー", "IPL", "ダーマペン4", "ハイフ"]
     };
 
+    const concernAliasWords = {
+      "赤み": ["赤み", "敏感", "炎症", "アゼライン", "ナイアシン", "グリチル", "CICA", "セラミド", "パンテノール", "IPL", "LED", "Vビーム"],
+      "クレーター・ニキビ跡凹み": ["クレーター", "ニキビ跡", "凹み", "真皮", "ジュベルック", "ポテンツァ", "ダーマペン", "サブシジョン", "レチ", "ペプチド", "PDRN", "PN", "ビタミンC"],
+      "毛穴の開き": ["毛穴", "皮脂", "角栓", "ざらつき", "ナイアシン", "アゼライン", "サリチル", "レチ", "ビタミンC", "亜鉛", "ポテンツァ", "ブレッシング", "ハイドラ"],
+      "くすみ": ["くすみ", "透明感", "角質", "色むら", "ビタミンC", "ナイアシン", "トラネキサム", "コウジ", "アルブチン", "乳酸", "IPL", "ピコ"],
+      "シミ・色素沈着": ["シミ", "色素", "肝斑", "メラニン", "トラネキサム", "ビタミンC", "ナイアシン", "コウジ", "アルブチン", "4MSK", "ピコ", "IPL"],
+      "ニキビ": ["ニキビ", "皮脂", "毛穴", "炎症", "アゼライン", "サリチル", "ナイアシン", "亜鉛", "硫黄", "グリチル", "ピーリング", "LED"],
+      "乾燥小じわ": ["乾燥", "小じわ", "保湿", "バリア", "セラミド", "ヒアルロン", "パンテノール", "PDRN", "PN", "ペプチド", "リジュラン", "水光"],
+      "たるみ": ["たるみ", "ハリ", "弾力", "フェイスライン", "レチ", "ペプチド", "ビタミンC", "ナイアシン", "PDRN", "PN", "ハイフ", "RF"]
+    };
+
     const state = { category: "all", query: "", skin: "", quick: "", selectedConcerns: [], sort: "relevance" };
     const el = {
       tabs: document.querySelector("#tabs"),
@@ -970,7 +981,7 @@
     }
 
     function getFiltered() {
-      const query = normalize([state.query, ...state.selectedConcerns].join(" "));
+      const query = buildSearchQuery();
       let items = data.map(item => ({ ...item, score: scoreItem(item, query) }));
       if (state.category !== "all") items = items.filter(item => item.kind === state.category);
       if (query) items = items.filter(item => item.score > 0);
@@ -979,6 +990,12 @@
         items = items.filter(item => item.kind === "skin" ? item.name === state.skin : normalize(item.searchable).includes(skinWord) || normalize((item.tags || []).join(" ")).includes(skinWord) || item.kind === "ingredient" || item.kind === "procedure");
       }
       return sortItems(items);
+    }
+
+    function buildSearchQuery() {
+      const terms = [state.query, ...state.selectedConcerns];
+      const expanded = terms.flatMap(term => [term, ...(concernAliasWords[term] || [])]);
+      return normalize(expanded.join(" "));
     }
 
     function scoreItem(item, query) {
@@ -1013,7 +1030,9 @@
     }
 
     function getFocusTerms() {
-      return [...state.selectedConcerns, state.query, state.skin].filter(Boolean);
+      return [...state.selectedConcerns, state.query, state.skin]
+        .filter(Boolean)
+        .flatMap(term => [term, ...(concernAliasWords[term] || [])]);
     }
 
     function getSkinPatterns() {
