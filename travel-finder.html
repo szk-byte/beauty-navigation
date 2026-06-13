@@ -22,6 +22,42 @@
       --radius: 8px;
     }
 
+    body.theme-adventure {
+      --paper: #fff8ef;
+      --panel: #fffdf8;
+      --accent: #008f7a;
+      --accent-2: #e14d2a;
+      --accent-3: #f4a51c;
+      --green-soft: #ddf6ef;
+      --rose-soft: #ffe5dc;
+      --gold-soft: #fff0c8;
+    }
+
+    body.theme-postcard {
+      --paper: #f7fbff;
+      --panel: #ffffff;
+      --accent: #2f6fbd;
+      --accent-2: #d33f72;
+      --accent-3: #ffba49;
+      --green-soft: #e3f3ff;
+      --rose-soft: #ffe7ef;
+      --gold-soft: #fff3d6;
+    }
+
+    body.theme-lounge {
+      --ink: #f7f0e6;
+      --muted: #c9bda9;
+      --line: rgba(255, 255, 255, .16);
+      --paper: #171717;
+      --panel: #24211d;
+      --accent: #d9a441;
+      --accent-2: #ee7f67;
+      --accent-3: #8fd5c1;
+      --green-soft: rgba(143, 213, 193, .16);
+      --rose-soft: rgba(238, 127, 103, .16);
+      --gold-soft: rgba(217, 164, 65, .18);
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -34,6 +70,19 @@
         linear-gradient(180deg, rgba(228, 241, 236, .82), rgba(251, 250, 247, 0) 360px),
         var(--paper);
       letter-spacing: 0;
+    }
+
+    body.theme-postcard {
+      background:
+        linear-gradient(180deg, rgba(47, 111, 189, .16), rgba(247, 251, 255, 0) 380px),
+        radial-gradient(circle at 18% 140px, rgba(255, 186, 73, .24), transparent 210px),
+        var(--paper);
+    }
+
+    body.theme-lounge {
+      background:
+        linear-gradient(180deg, rgba(217, 164, 65, .2), rgba(23, 23, 23, 0) 430px),
+        var(--paper);
     }
 
     button,
@@ -95,11 +144,41 @@
       backdrop-filter: blur(16px);
     }
 
+    body.theme-lounge .toolbar {
+      background: rgba(23, 23, 23, .82);
+    }
+
     .controls {
       display: grid;
       grid-template-columns: minmax(220px, 1fr) auto;
       gap: 12px;
       align-items: center;
+    }
+
+    .theme-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      grid-column: 1 / -1;
+      margin-top: 12px;
+    }
+
+    .theme-button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--ink);
+      background: var(--panel);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .theme-button.active {
+      border-color: var(--accent-2);
+      color: #fff;
+      background: var(--accent-2);
     }
 
     .searchbox {
@@ -190,6 +269,16 @@
       box-shadow: 0 8px 28px rgba(28, 39, 49, .07);
       cursor: pointer;
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    body.theme-postcard .card {
+      border-width: 0;
+      box-shadow: 0 12px 0 rgba(47, 111, 189, .12), 0 18px 45px rgba(47, 111, 189, .14);
+    }
+
+    body.theme-lounge .card {
+      background: linear-gradient(180deg, #2d2923, #211f1d);
+      box-shadow: 0 18px 52px rgba(0, 0, 0, .38);
     }
 
     .card:hover,
@@ -327,6 +416,15 @@
       background: #fff;
     }
 
+    body.theme-lounge .tag,
+    body.theme-lounge input[type="search"],
+    body.theme-lounge .filter,
+    body.theme-lounge .theme-button,
+    body.theme-lounge .open-detail {
+      color: var(--ink);
+      background: #302c27;
+    }
+
     .open-detail {
       width: 100%;
       min-height: 40px;
@@ -371,8 +469,16 @@
 
     .detail-photo {
       min-height: 250px;
-      background-position: center;
-      background-size: cover;
+      background: #d7dedf;
+      overflow: hidden;
+    }
+
+    .detail-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      object-fit: cover;
     }
 
     .detail-head {
@@ -499,6 +605,11 @@
         grid-template-columns: 1fr;
       }
 
+      .theme-switcher {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+      }
+
       .filters {
         justify-content: flex-start;
         overflow-x: auto;
@@ -552,7 +663,7 @@
     }
   </style>
 </head>
-<body>
+<body class="theme-postcard">
   <header class="shell">
     <div class="eyebrow">Trip Finder</div>
     <h1>行きたい気分から選ぶ、わくわく旅先リスト</h1>
@@ -573,6 +684,11 @@
         <button class="filter" data-filter="stay" type="button">ホテル・宿泊</button>
         <button class="filter" data-filter="sight" type="button">観光施設</button>
         <button class="filter" data-filter="activity" type="button">アクティビティ</button>
+      </div>
+      <div class="theme-switcher" aria-label="デザイン切り替え">
+        <button class="theme-button" data-theme="theme-adventure" type="button">旅フェス</button>
+        <button class="theme-button active" data-theme="theme-postcard" type="button">絵はがき</button>
+        <button class="theme-button" data-theme="theme-lounge" type="button">夜ラウンジ</button>
       </div>
     </div>
   </section>
@@ -597,7 +713,7 @@
     <section class="detail-sheet" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
       <button id="detailClose" class="detail-close" type="button" aria-label="詳細を閉じる">×</button>
       <div class="detail-hero">
-        <div id="detailPhoto" class="detail-photo" aria-hidden="true"></div>
+        <div id="detailPhoto" class="detail-photo"></div>
         <div class="detail-head">
           <span id="detailType" class="type food">食事</span>
           <h3 id="detailTitle"></h3>
@@ -640,7 +756,7 @@
         hook: "北アルプスの空気と一緒に、焼きたてパンで朝を始める。",
         desc: "白馬の山旅に合わせたいベーカリー。コーヒー、ペストリー、サンドを片手に、スキー前後やドライブの休憩を軽やかに整えられます。",
         tags: ["白馬", "ベーカリー", "カフェ", "朝食", "雪山"],
-        photos: ["hakuba japan bakery cafe snow mountain", "artisan bread coffee morning"]
+        photos: ["https://thecitybakery.jp/wp-content/uploads/2022/05/cb-ogp-img.jpg", "https://dj42z4598eqoa.cloudfront.net/wp-content/uploads/2020/05/19124953/about_img_1.jpg?20200519"]
       },
       {
         name: "泊まれる蔵 葉山",
@@ -649,7 +765,7 @@
         hook: "蔵に泊まる非日常。静かな海辺の町で暮らすように休む。",
         desc: "歴史ある建物の趣と、葉山らしい穏やかな時間を楽しむ滞在候補。海、路地、地元の食事まで含めて小さな逃避行に向いています。",
         tags: ["葉山", "古民家", "一棟貸し", "海辺", "静かな旅"],
-        photos: ["hayama kanagawa coast traditional house", "japanese old storehouse interior"]
+        photos: ["hayama bath bed kura hayama", "hayama morito beach"]
       },
       {
         name: "星降る夜に",
@@ -667,7 +783,7 @@
         hook: "パスポートなしで英国へ。霧の高原に現れる異国の村。",
         desc: "中世英国風の建築、英語文化体験、宿泊をまとめて楽しめる施設。マナーハウスの空気感があり、写真を撮るだけでも気分が上がります。",
         tags: ["福島", "英国風", "高原", "建築", "非日常"],
-        photos: ["british hills fukushima manor", "english garden stone house", "fukushima highland forest"]
+        photos: ["https://www.british-hills.co.jp/ogp.jpg"]
       },
       {
         name: "レクー沖縄北谷スパ＆リゾート",
@@ -676,7 +792,7 @@
         hook: "北谷の夕焼け、プール、スパ。沖縄の休日を一気に満たす。",
         desc: "アメリカンビレッジ周辺を楽しむ拠点にしやすいリゾートホテル。海沿い散歩、買い物、スパ時間を組み合わせたい旅に合います。",
         tags: ["沖縄", "北谷", "リゾート", "スパ", "夕焼け"],
-        photos: ["okinawa chatan resort sunset", "okinawa hotel pool", "american village okinawa night"]
+        photos: ["https://www.vessel-hotel.jp/lequ/okinawa/assets/img/common/ogp.png"]
       },
       {
         name: "宝塚ホテル",
@@ -694,7 +810,7 @@
         hook: "海を眺める大人の隠れ家。房総で深呼吸する休日。",
         desc: "館山の海景色をゆったり楽しむリゾートステイ候補。客室時間を重視して、温泉、食事、夕景を静かに味わいたい旅に。",
         tags: ["千葉", "館山", "海", "温泉", "大人旅"],
-        photos: ["tateyama chiba ocean resort", "boso peninsula sunset sea"]
+        photos: ["https://shinra-chiba.com/common/images/ogimage.jpg"]
       },
       {
         name: "永観堂",
@@ -703,7 +819,7 @@
         hook: "紅葉の名所として名高い、京都の秋を濃く浴びる寺院。",
         desc: "正式には禅林寺。見返り阿弥陀や池泉、回廊、秋の紅葉が魅力で、南禅寺周辺の散策と組み合わせやすい名所です。",
         tags: ["京都", "寺院", "紅葉", "庭園", "散策"],
-        photos: ["eikando kyoto autumn temple", "kyoto maple temple garden", "japanese garden pond autumn"]
+        photos: ["https://www.eikando.or.jp/image/850nen.jpg", "https://commons.wikimedia.org/wiki/Special:FilePath/Eikan-do%20Zenrin-ji%2C%20November%202016%20-01.jpg"]
       },
       {
         name: "肉の隠れ家 おあがり",
@@ -730,7 +846,7 @@
         hook: "高知の海辺に現れる、白と青のエーゲ海気分。",
         desc: "サントリーニ島を思わせる白い建築と太平洋の眺めが印象的なリゾート。写真映えと海景色を重視する旅にぴったりです。",
         tags: ["高知", "リゾート", "海", "絶景", "記念日"],
-        photos: ["villa santorini kochi white hotel", "kochi pacific ocean resort", "white seaside hotel japan"]
+        photos: ["villa santorini kochi official hotel", "kochi villa santorini white hotel"]
       },
       {
         name: "MORETHAN",
@@ -784,7 +900,7 @@
         hook: "英虞湾を眺めてこもる、大人の温泉リトリート。",
         desc: "伊勢志摩の海と静けさを味わう宿泊候補。客室露天、食事、ラウンジ時間を軸に、何もしない贅沢を楽しめます。",
         tags: ["三重", "志摩", "温泉宿", "海", "大人旅"],
-        photos: ["shima mie ryokan ocean", "ago bay sunset", "japanese luxury ryokan room"]
+        photos: ["https://www.basaratei.com/images/fb_icon.jpg", "ago bay basaratei ryokan"]
       },
       {
         name: "和倉温泉",
@@ -793,7 +909,7 @@
         hook: "能登の海辺で湯に浸かる、歴史ある温泉地。",
         desc: "七尾湾に面した温泉地。宿泊、海の幸、湾の景色をまとめて楽しめる一方、最新の営業・復旧状況は事前確認が大切です。",
         tags: ["石川", "能登", "温泉", "海の幸", "復興応援"],
-        photos: ["wakura onsen noto bay", "japanese seaside hot spring"]
+        photos: ["https://www.wakura.or.jp/assets/img/ogp.jpg"]
       },
       {
         name: "大磯プリンスホテル",
@@ -820,7 +936,7 @@
         hook: "高原でゆるむ、クラシックリゾートな那須時間。",
         desc: "那須の自然に囲まれた宿泊候補。温泉、食事、高原ドライブを組み合わせて、のんびり過ごす週末旅に向いています。",
         tags: ["那須", "高原", "ホテル", "温泉", "避暑"],
-        photos: ["nasu highland resort hotel", "tochigi forest hotel"]
+        photos: ["https://dormy-hotels.com/resort/hotels/nasu/ogp.jpg"]
       },
       {
         name: "伊根の舟屋",
@@ -829,7 +945,7 @@
         hook: "海の上に暮らしが並ぶ、唯一無二の京都の港町。",
         desc: "1階が船の格納場所、2階が住まいという舟屋が湾沿いに並ぶ景観。遊覧船や散策で、京都市内とは違う水辺の旅情を楽しめます。",
         tags: ["京都", "伊根", "舟屋", "海辺", "町歩き"],
-        photos: ["ine funaya kyoto boathouse", "kyoto fishing village sea", "japan waterfront village"]
+        photos: ["https://www.ine-kankou.jp/wp/wp-content/uploads/2026/06/%E4%BC%8A%E6%A0%B9%E3%83%90%E3%82%B92-1024x569.jpg"]
       },
       {
         name: "瑠璃光院",
@@ -838,7 +954,7 @@
         hook: "机に映る青もみじと紅葉。静かな美しさに息をのむ。",
         desc: "季節限定公開で知られる京都の名所。磨かれた床や机に庭の緑・紅葉が映り込む景色が印象的で、事前予約や公開時期の確認が重要です。",
         tags: ["京都", "寺院", "青もみじ", "紅葉", "予約"],
-        photos: ["rurikoin kyoto maple reflection", "kyoto temple green maple", "japanese temple garden reflection"]
+        photos: ["https://rurikoin.komyoji.com/assets/images/top_Img04.jpg"]
       },
       {
         name: "レールマウンテンバイク Gattan Go!!",
@@ -847,7 +963,7 @@
         hook: "廃線レールの上を自転車で走る、爽快な冒険。",
         desc: "旧神岡鉄道のレールを活用したアクティビティ。渓谷や町並みを眺めながら走る体験型の旅で、家族や友人同士でも盛り上がります。",
         tags: ["岐阜", "飛騨", "自転車", "廃線", "体験"],
-        photos: ["gifu rail mountain bike", "hida railway bicycle bridge"]
+        photos: ["https://rail-mtb.com/src/uploads/2026/06/cropped-cropped-cropped-cropped-147899d06d9f5a8f7e750ba010e068a8.jpg"]
       },
       {
         name: "佐渡島 ナイトSUP",
@@ -865,7 +981,7 @@
         hook: "新橋の夜をまるごと遊ぶ、大人のエンタメ拠点。",
         desc: "食事、酒場、エンタメ気分を一度に楽しみたい時の候補。東京滞在の夜に、はしご感覚で予定へ差し込めます。",
         tags: ["新橋", "エンタメ", "夜遊び", "食事", "東京"],
-        photos: ["shinbashi tokyo nightlife", "tokyo entertainment dining neon"]
+        photos: ["https://grandhammer.jp/wp/wp-content/uploads/2024/07/ogp.jpg"]
       }
     ];
 
@@ -884,7 +1000,8 @@
         plan: "チェックイン前後に森戸海岸や葉山マリーナ方面を散歩。夜は近くの飲食店、朝は海辺のカフェを合わせると満足度が上がります。",
         memo: "一棟貸し系は定員、チェックイン方法、駐車場、キャンセル規定の確認が大事です。",
         links: [
-          { label: "公式サイト", url: "https://www.thebathandbed.com/" }
+          { label: "楽天トラベル検索", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=THE%20BATH%20%26%20BED%20HAYAMA" },
+          { label: "関連検索", url: "https://www.google.com/search?q=THE+BATH+%26+BED+HAYAMA+%E6%B3%8A%E3%81%BE%E3%82%8C%E3%82%8B%E8%94%B5+%E8%91%89%E5%B1%B1" }
         ]
       },
       "星降る夜に": {
@@ -910,7 +1027,7 @@
         memo: "プール営業期間、温泉利用条件、駐車場、朝食付きプランの内容を比較して選ぶと失敗しにくいです。",
         links: [
           { label: "公式サイト", url: "https://www.vessel-hotel.jp/lequ/okinawa/" },
-          { label: "宿泊予約", url: "https://go-vesselhotels.reservation.jp/ja/hotels/vessel-lequokinawa" }
+          { label: "楽天トラベル検索", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%83%AC%E3%82%AF%E3%83%BC%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7" }
         ]
       },
       "宝塚ホテル": {
@@ -919,7 +1036,7 @@
         memo: "公演日や週末は埋まりやすいので、劇場予定と一緒に早めの空室確認がおすすめです。",
         links: [
           { label: "公式サイト", url: "https://www.hankyu-hotel.com/hotel/hh/takarazukahotel" },
-          { label: "宿泊予約", url: "https://go-hhd.reservation.jp/ja/hotels/hh-takarazuka" }
+          { label: "楽天トラベル検索", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E5%AE%9D%E5%A1%9A%E3%83%9B%E3%83%86%E3%83%AB" }
         ]
       },
       "THE SHINRA": {
@@ -927,7 +1044,8 @@
         plan: "夕景の時間を宿で過ごす予定にして、早めのチェックイン。翌日は南房総ドライブや海辺散歩へ。",
         memo: "客室タイプごとの眺望、食事時間、送迎やアクセスを確認して選ぶと満足度が上がります。",
         links: [
-          { label: "公式サイト", url: "https://www.theshinra.com/" }
+          { label: "公式サイト", url: "https://www.shinra-chiba.com/tateyama/" },
+          { label: "楽天トラベル検索", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=THE%20SHINRA" }
         ]
       },
       "永観堂": {
@@ -943,6 +1061,7 @@
         plan: "祇園、八坂神社、先斗町散策のあとに予約しておくと、観光から食事への流れがきれいです。",
         memo: "席数やコース、当日予約可否は変わりやすいので、予約サイトか店舗情報で確認してください。",
         links: [
+          { label: "食べログ検索", url: "https://tabelog.com/rstLst/?sw=%E8%82%89%E3%81%AE%E9%9A%A0%E3%82%8C%E5%AE%B6%20%E3%81%8A%E3%81%82%E3%81%8C%E3%82%8A%20%E4%BA%AC%E9%83%BD" },
           { label: "関連検索", url: "https://www.google.com/search?q=%E8%82%89%E3%81%AE%E9%9A%A0%E3%82%8C%E5%AE%B6+%E3%81%8A%E3%81%82%E3%81%8C%E3%82%8A+%E4%BA%AC%E9%83%BD+%E4%BA%88%E7%B4%84" }
         ]
       },
@@ -975,8 +1094,8 @@
         plan: "買い物や観劇、映画の後にディナー予約。コース内容を決めておくと当日の流れが楽です。",
         memo: "店舗が複数表示されることがあるため、予約時は新宿店か、希望店舗の住所を必ず確認してください。",
         links: [
-          { label: "公式サイト", url: "https://sushi-yamaken.com/" },
-          { label: "関連検索", url: "https://www.google.com/search?q=%E9%AE%A8%E3%82%84%E3%81%BE%E3%81%91%E3%82%93+%E6%96%B0%E5%AE%BF+%E4%BA%88%E7%B4%84" }
+          { label: "食べログ検索", url: "https://tabelog.com/rstLst/?sw=%E9%AE%A8%E3%82%84%E3%81%BE%E3%81%91%E3%82%93%20%E6%96%B0%E5%AE%BF" },
+          { label: "楽天ぐるなび検索", url: "https://r.gnavi.co.jp/area/aream2115/rs/?fw=%E9%AE%A8%E3%82%84%E3%81%BE%E3%81%91%E3%82%93" }
         ]
       },
       "THE BASE GLAMPING 湯河原": {
@@ -984,7 +1103,8 @@
         plan: "夕方にチェックインしてBBQや焚き火、翌朝は湯河原のカフェや海沿いドライブへ。",
         memo: "客室設備、食材付きプラン、ペット可否、雨天時の過ごし方を確認しておくと安心です。",
         links: [
-          { label: "公式サイト", url: "https://www.thebaseglamping.com/" }
+          { label: "公式サイト", url: "https://www.thebaseglamping.com/" },
+          { label: "楽天トラベル検索", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=THE%20BASE%20GLAMPING%20%E6%B9%AF%E6%B2%B3%E5%8E%9F" }
         ]
       },
       "どんぐり": {
@@ -992,6 +1112,7 @@
         plan: "沼津港や商店街散策とセットにして、昼食か早めの夕食に入れると動きやすいです。",
         memo: "同名店舗があるため、訪問前に住所、営業日、支払い方法を地図や予約サイトで確認してください。",
         links: [
+          { label: "食べログ検索", url: "https://tabelog.com/rstLst/?sw=%E6%B2%BC%E6%B4%A5%20%E3%81%A9%E3%82%93%E3%81%90%E3%82%8A" },
           { label: "関連検索", url: "https://www.google.com/search?q=%E9%9D%99%E5%B2%A1+%E6%B2%BC%E6%B4%A5+%E3%81%A9%E3%82%93%E3%81%90%E3%82%8A+%E9%A3%B2%E9%A3%9F%E5%BA%97" }
         ]
       },
@@ -1000,6 +1121,7 @@
         plan: "友人同士ならコース、少人数なら席だけ予約で好みの部位を選ぶ流れが使いやすいです。",
         memo: "店名・店舗位置が似た情報と混ざりやすいため、予約前に住所と営業時間を確認してください。",
         links: [
+          { label: "食べログ検索", url: "https://tabelog.com/rstLst/?sw=%E6%96%B0%E5%AE%BF%20%E7%84%BC%E8%82%89%E3%82%8F%E3%81%97%E3%81%AE" },
           { label: "関連検索", url: "https://www.google.com/search?q=%E6%96%B0%E5%AE%BF+%E7%84%BC%E8%82%89%E3%82%8F%E3%81%97%E3%81%AE+%E4%BA%88%E7%B4%84" }
         ]
       },
@@ -1034,7 +1156,7 @@
         memo: "天候や運行状況で見え方が大きく変わるため、ライブカメラや営業時間を直前確認してください。",
         links: [
           { label: "公式サイト", url: "https://mt-moiwa.jp/" },
-          { label: "WEBチケット", url: "https://www.kkday.com/ja/product/productlist?keyword=%E8%97%BB%E5%B2%A9%E5%B1%B1" }
+          { label: "チケット検索", url: "https://www.google.com/search?q=%E8%97%BB%E5%B2%A9%E5%B1%B1+WEB%E3%83%81%E3%82%B1%E3%83%83%E3%83%88" }
         ]
       },
       "ウェルネスの森 那須": {
@@ -1088,6 +1210,7 @@
     };
 
     const imageUrl = (query, lock) => {
+      if (/^https?:\/\//.test(query)) return query;
       const cleaned = query.toLowerCase().replace(/[^a-z0-9]+/g, ",").replace(/^,|,$/g, "");
       return `https://source.unsplash.com/900x650/?${cleaned}&sig=${lock}`;
     };
@@ -1148,6 +1271,15 @@
       });
     });
 
+    document.querySelectorAll(".theme-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".theme-button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        document.body.classList.remove("theme-adventure", "theme-postcard", "theme-lounge");
+        document.body.classList.add(button.dataset.theme);
+      });
+    });
+
     const detailOverlay = document.querySelector("#detailOverlay");
     const detailClose = document.querySelector("#detailClose");
     const detailPhoto = document.querySelector("#detailPhoto");
@@ -1167,7 +1299,8 @@
 
       const detail = tripDetails[trip.name] || {};
       const firstPhoto = trip.photos[0] || trip.name;
-      detailPhoto.style.backgroundImage = `url("${imageUrl(firstPhoto, 8800 + trips.indexOf(trip))}")`;
+      const photoUrl = imageUrl(firstPhoto, 8800 + trips.indexOf(trip));
+      detailPhoto.innerHTML = `<img src="${photoUrl}" alt="${trip.name}の代表イメージ" onerror="this.src='https://picsum.photos/seed/${encodeURIComponent(trip.name + 'detail')}/900/650'">`;
       detailType.className = `type ${trip.category}`;
       detailType.textContent = categoryLabels[trip.category];
       detailTitle.textContent = trip.name;
