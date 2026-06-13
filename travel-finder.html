@@ -251,6 +251,141 @@
       font-size: 14px;
     }
 
+    .ranking {
+      margin: 22px 0 6px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .7);
+      box-shadow: 0 10px 34px rgba(28, 39, 49, .07);
+    }
+
+    body.theme-lounge .ranking {
+      background: rgba(36, 33, 29, .88);
+    }
+
+    .ranking-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .ranking h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .ranking-note {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .rank-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .rank-tab {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--ink);
+      background: var(--panel);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .rank-tab.active {
+      border-color: var(--accent);
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .pref-row {
+      display: grid;
+      grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .pref-select {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      color: var(--ink);
+      background: var(--panel);
+      font: inherit;
+      font-weight: 800;
+    }
+
+    .pref-copy {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .rank-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .rank-card {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      color: inherit;
+      background: var(--panel);
+      text-decoration: none;
+    }
+
+    .rank-no {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--accent-2);
+      font-weight: 900;
+    }
+
+    .rank-card h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .rank-card p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .rank-area {
+      display: block;
+      margin-top: 6px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -660,10 +795,38 @@
       .meta-row {
         flex-direction: column;
       }
+
+      .ranking {
+        padding: 14px;
+      }
+
+      .ranking-head {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .rank-tabs {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 2px;
+      }
+
+      .rank-tab {
+        flex: 0 0 auto;
+      }
+
+      .rank-list {
+        grid-template-columns: 1fr;
+      }
+
+      .pref-row {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-<body class="theme-postcard">
+<body class="theme-adventure">
   <header class="shell">
     <div class="eyebrow">Trip Finder</div>
     <h1>行きたい気分から選ぶ、わくわく旅先リスト</h1>
@@ -686,14 +849,34 @@
         <button class="filter" data-filter="activity" type="button">アクティビティ</button>
       </div>
       <div class="theme-switcher" aria-label="デザイン切り替え">
-        <button class="theme-button" data-theme="theme-adventure" type="button">旅フェス</button>
-        <button class="theme-button active" data-theme="theme-postcard" type="button">絵はがき</button>
+        <button class="theme-button active" data-theme="theme-adventure" type="button">旅フェス</button>
+        <button class="theme-button" data-theme="theme-postcard" type="button">絵はがき</button>
         <button class="theme-button" data-theme="theme-lounge" type="button">夜ラウンジ</button>
       </div>
     </div>
   </section>
 
   <main class="shell">
+    <section class="ranking" aria-label="全国おすすめトップ10">
+      <div class="ranking-head">
+        <div>
+          <h2>全国おすすめトップ10</h2>
+          <p class="ranking-note">観光地・食事・宿泊施設を切り替えて、次の旅の候補をざっと眺められます。</p>
+        </div>
+        <div class="rank-tabs" role="list" aria-label="ランキング種別">
+          <button class="rank-tab active" data-rank="sight" type="button">観光地</button>
+          <button class="rank-tab" data-rank="food" type="button">食事</button>
+          <button class="rank-tab" data-rank="stay" type="button">宿泊施設</button>
+        </div>
+      </div>
+      <div class="pref-row">
+        <select id="prefSelect" class="pref-select" aria-label="都道府県">
+          <option value="全国">全国</option>
+        </select>
+        <p id="prefCopy" class="pref-copy">全国版のおすすめトップ10を表示中。都道府県を選ぶと、その県の観光地・食事・宿泊施設トップ10に切り替わります。</p>
+      </div>
+      <div id="rankList" class="rank-list"></div>
+    </section>
     <div class="meta-row">
       <div id="resultCount">読み込み中...</div>
       <div>写真は旅先の雰囲気が伝わる代表イメージです。</div>
@@ -985,6 +1168,111 @@
       }
     ];
 
+    const rankingData = {
+      sight: [
+        { name: "京都・東山", area: "京都府", desc: "寺社、路地、庭園、甘味まで一日中歩ける王道文化旅。", url: "https://www.japan.travel/jp/destinations/kansai/kyoto/" },
+        { name: "富士山・富士五湖", area: "山梨県 / 静岡県", desc: "湖越しの富士、温泉、ドライブをまとめて楽しめる絶景エリア。", url: "https://www.japan.travel/jp/fuji-guide/" },
+        { name: "石垣島・竹富島", area: "沖縄県", desc: "海、島時間、星空、八重山文化まで味わえる南国旅の主役。", url: "https://www.japan.travel/jp/destinations/okinawa/ishigaki-island/" },
+        { name: "金沢", area: "石川県", desc: "兼六園、茶屋街、現代アート、海の幸をコンパクトに巡れる。", url: "https://www.japan.travel/jp/destinations/hokuriku-shinetsu/ishikawa/kanazawa-and-around/" },
+        { name: "宮島・厳島神社", area: "広島県", desc: "海に浮かぶ鳥居と島歩きが印象的な世界遺産の旅。", url: "https://www.japan.travel/jp/world-heritage/itsukushima-shrine/" },
+        { name: "別府・由布院", area: "大分県", desc: "湯けむり、地獄めぐり、温泉街散策で温泉旅の満足度が高い。", url: "https://www.japan.travel/jp/destinations/kyushu/oita/beppu-and-around/" },
+        { name: "札幌・小樽", area: "北海道", desc: "夜景、海鮮、運河、雪景色を組み合わせやすい北海道入門。", url: "https://www.japan.travel/jp/destinations/hokkaido/hokkaido/sapporo-and-around/" },
+        { name: "奈良公園・東大寺", area: "奈良県", desc: "大仏、鹿、古都の空気をゆったり味わえる歴史散策。", url: "https://www.japan.travel/jp/destinations/kansai/nara/nara-park-and-around/" },
+        { name: "日光", area: "栃木県", desc: "社寺、滝、湖、紅葉まで季節ごとの表情が強い山の観光地。", url: "https://www.japan.travel/jp/destinations/kanto/tochigi/nikko/" },
+        { name: "直島・瀬戸内", area: "香川県 / 岡山県", desc: "島旅と現代アートを合わせる、感性が動く瀬戸内ルート。", url: "https://www.japan.travel/jp/destinations/shikoku/kagawa/naoshima/" }
+      ],
+      food: [
+        { name: "鮨 一幸", area: "東京 / 寿司", desc: "食べログアワードGold掲載。寿司旅の目的地にしたい一軒。", url: "https://award.tabelog.com/" },
+        { name: "成生", area: "静岡 / 天ぷら", desc: "素材と揚げのライブ感を楽しむ、静岡の名店候補。", url: "https://award.tabelog.com/" },
+        { name: "緒方", area: "京都 / 日本料理", desc: "京都らしい季節感と緊張感を味わう日本料理。", url: "https://award.tabelog.com/" },
+        { name: "蒼", area: "東京 / イノベーティブ", desc: "特別な日に入れたい、現代的な美食体験。", url: "https://award.tabelog.com/" },
+        { name: "日本橋蛎殻町 すぎた", area: "東京 / 寿司", desc: "江戸前寿司の高揚感を目的に旅程を組みたくなる。", url: "https://award.tabelog.com/" },
+        { name: "かさ原", area: "東京 / 焼き鳥・鳥料理", desc: "焼き鳥を主役にした夜を極上にする候補。", url: "https://award.tabelog.com/" },
+        { name: "さわ田", area: "東京 / 寿司", desc: "寿司好きなら一度は視界に入る、特別感のある名店。", url: "https://award.tabelog.com/" },
+        { name: "レストラン ナズ", area: "長野 / イノベーティブ", desc: "地方美食旅としても魅力がある長野の注目店。", url: "https://award.tabelog.com/" },
+        { name: "鮨 三心", area: "大阪 / 寿司", desc: "大阪で寿司を目的にした夜を作るなら候補に。", url: "https://award.tabelog.com/" },
+        { name: "松川", area: "東京 / 日本料理", desc: "日本料理の美しさを深く味わう、晴れの日向きの一軒。", url: "https://award.tabelog.com/" }
+      ],
+      stay: [
+        { name: "星のや富士", area: "山梨県", desc: "富士山麓でグランピング気分を上質に楽しめる宿。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E6%98%9F%E3%81%AE%E3%82%84%E5%AF%8C%E5%A3%AB" },
+        { name: "加賀屋", area: "石川県 / 和倉温泉", desc: "温泉旅館の王道感を味わえる、能登を代表する宿。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E5%8A%A0%E8%B3%80%E5%B1%8B" },
+        { name: "アマン東京", area: "東京都", desc: "都市の中心で静けさと非日常を楽しむラグジュアリーホテル。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%82%A2%E3%83%9E%E3%83%B3%E6%9D%B1%E4%BA%AC" },
+        { name: "ザ・リッツ・カールトン日光", area: "栃木県", desc: "中禅寺湖と男体山の景色を楽しむ山岳リゾート。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%83%AA%E3%83%83%E3%83%84%E3%82%AB%E3%83%BC%E3%83%AB%E3%83%88%E3%83%B3%E6%97%A5%E5%85%89" },
+        { name: "ふふ 河口湖", area: "山梨県", desc: "富士山ビューと客室時間を楽しむ記念日向きの滞在。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%81%B5%E3%81%B5%20%E6%B2%B3%E5%8F%A3%E6%B9%96" },
+        { name: "ベネッセハウス", area: "香川県 / 直島", desc: "美術館に泊まるような、瀬戸内アート旅の象徴的宿。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%83%99%E3%83%8D%E3%83%83%E3%82%BB%E3%83%8F%E3%82%A6%E3%82%B9" },
+        { name: "杉乃井ホテル", area: "大分県 / 別府", desc: "温泉、食事、プール、眺望をまとめて楽しめる大型リゾート。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E6%9D%89%E4%B9%83%E4%BA%95%E3%83%9B%E3%83%86%E3%83%AB" },
+        { name: "ハレクラニ沖縄", area: "沖縄県", desc: "海辺のリゾート感をしっかり味わいたい沖縄旅に。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%83%8F%E3%83%AC%E3%82%AF%E3%83%A9%E3%83%8B%E6%B2%96%E7%B8%84" },
+        { name: "御宿 竹林亭", area: "佐賀県 / 武雄温泉", desc: "庭園、温泉、静けさを大切にしたい大人の宿泊候補。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E5%BE%A1%E5%AE%BF%20%E7%AB%B9%E6%9E%97%E4%BA%AD" },
+        { name: "あさば", area: "静岡県 / 修善寺", desc: "伝統旅館の美意識をゆっくり味わう、特別な温泉滞在。", url: "https://travel.rakuten.co.jp/keyword/Search.do?f_query=%E3%81%82%E3%81%95%E3%81%B0%20%E4%BF%AE%E5%96%84%E5%AF%BA" }
+      ]
+    };
+
+    const prefectures = [
+      "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県","茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県","新潟県","富山県","石川県","福井県","山梨県","長野県","岐阜県","静岡県","愛知県","三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県","鳥取県","島根県","岡山県","広島県","山口県","徳島県","香川県","愛媛県","高知県","福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"
+    ];
+
+    const prefectureSeeds = {
+      "北海道": { sight: ["札幌・大通公園","小樽運河","函館山夜景","美瑛・青い池","富良野ラベンダー","知床五湖"], food: ["札幌ラーメン","ジンギスカン","海鮮丼","スープカレー","函館朝市"], stay: ["定山渓温泉","登別温泉","ニセコリゾート","函館湯の川温泉"] },
+      "青森県": { sight: ["奥入瀬渓流","十和田湖","弘前城","青森ねぶたの家 ワ・ラッセ","酸ヶ湯温泉"], food: ["大間まぐろ","せんべい汁","のっけ丼","味噌カレー牛乳ラーメン","りんごスイーツ"], stay: ["浅虫温泉","酸ヶ湯温泉宿","星野リゾート青森屋","弘前シティホテル"] },
+      "岩手県": { sight: ["中尊寺金色堂","浄土ヶ浜","龍泉洞","小岩井農場","盛岡城跡公園"], food: ["盛岡冷麺","わんこそば","じゃじゃ麺","前沢牛","三陸海鮮"], stay: ["花巻温泉","つなぎ温泉","安比高原リゾート","盛岡駅近ホテル"] },
+      "宮城県": { sight: ["松島","仙台城跡","瑞鳳殿","秋保大滝","蔵王御釜"], food: ["牛たん","ずんだ餅","笹かまぼこ","はらこ飯","仙台せり鍋"], stay: ["秋保温泉","作並温泉","松島温泉","仙台シティホテル"] },
+      "秋田県": { sight: ["角館武家屋敷","乳頭温泉郷","田沢湖","男鹿半島","秋田犬の里"], food: ["きりたんぽ鍋","稲庭うどん","比内地鶏","しょっつる鍋","横手焼きそば"], stay: ["乳頭温泉郷","男鹿温泉","田沢湖高原温泉","秋田駅近ホテル"] },
+      "山形県": { sight: ["銀山温泉","山寺","蔵王温泉","加茂水族館","最上川舟下り"], food: ["山形牛","芋煮","冷たい肉そば","さくらんぼスイーツ","米沢ラーメン"], stay: ["銀山温泉宿","蔵王温泉","かみのやま温泉","山形駅近ホテル"] },
+      "福島県": { sight: ["大内宿","鶴ヶ城","五色沼","スパリゾートハワイアンズ","ブリティッシュヒルズ"], food: ["喜多方ラーメン","円盤餃子","会津ソースカツ丼","馬刺し","桃スイーツ"], stay: ["磐梯熱海温泉","東山温泉","高湯温泉","いわき湯本温泉"] },
+      "茨城県": { sight: ["国営ひたち海浜公園","袋田の滝","偕楽園","筑波山","大洗磯前神社"], food: ["あんこう鍋","納豆料理","常陸牛","大洗海鮮","メロン"], stay: ["大洗ホテル","筑波山温泉","水戸駅近ホテル","袋田温泉"] },
+      "栃木県": { sight: ["日光東照宮","華厳の滝","中禅寺湖","那須高原","足利フラワーパーク"], food: ["宇都宮餃子","佐野ラーメン","とちおとめスイーツ","日光湯波","那須和牛"], stay: ["鬼怒川温泉","日光中禅寺湖ホテル","那須高原ホテル","宇都宮駅近ホテル"] },
+      "群馬県": { sight: ["草津温泉湯畑","伊香保石段街","富岡製糸場","尾瀬","榛名湖"], food: ["水沢うどん","焼きまんじゅう","おっきりこみ","峠の釜めし","上州牛"], stay: ["草津温泉宿","伊香保温泉","四万温泉","みなかみ温泉"] },
+      "埼玉県": { sight: ["川越蔵造りの町並み","長瀞ラインくだり","秩父神社","鉄道博物館","ムーミンバレーパーク"], food: ["うなぎ","武蔵野うどん","わらじカツ丼","川越芋スイーツ","秩父そば"], stay: ["秩父温泉宿","川越ホテル","大宮駅近ホテル","長瀞旅館"] },
+      "千葉県": { sight: ["東京ディズニーリゾート","鋸山","鴨川シーワールド","成田山新勝寺","房総フラワーライン"], food: ["なめろう","勝浦タンタンメン","銚子海鮮","落花生スイーツ","房総寿司"], stay: ["浦安リゾートホテル","館山温泉","鴨川温泉","成田空港ホテル"] },
+      "東京都": { sight: ["浅草寺","東京スカイツリー","渋谷スクランブル交差点","上野公園","お台場"], food: ["江戸前寿司","もんじゃ焼き","ラーメン名店","ホテルブッフェ","下町洋食"], stay: ["丸の内ホテル","新宿ホテル","銀座ホテル","お台場リゾート"] },
+      "神奈川県": { sight: ["横浜みなとみらい","鎌倉大仏","江の島","箱根芦ノ湖","大涌谷"], food: ["横浜中華街","しらす丼","家系ラーメン","箱根そば","三崎まぐろ"], stay: ["箱根温泉旅館","横浜ベイホテル","湯河原温泉","鎌倉ホテル"] },
+      "新潟県": { sight: ["佐渡島","清津峡","越後湯沢","弥彦神社","星峠の棚田"], food: ["へぎそば","新潟寿司","タレカツ丼","南魚沼コシヒカリ","日本酒蔵"], stay: ["越後湯沢温泉","月岡温泉","佐渡リゾート","新潟駅近ホテル"] },
+      "富山県": { sight: ["立山黒部アルペンルート","黒部峡谷鉄道","雨晴海岸","五箇山合掌造り","富岩運河環水公園"], food: ["富山湾寿司","白えび","ほたるいか","ブラックラーメン","ます寿司"], stay: ["宇奈月温泉","富山駅近ホテル","立山山岳ホテル","氷見温泉"] },
+      "石川県": { sight: ["兼六園","ひがし茶屋街","21世紀美術館","和倉温泉","千里浜なぎさドライブウェイ"], food: ["金沢寿司","のどぐろ","加賀料理","金沢おでん","近江町市場海鮮"], stay: ["金沢ホテル","山代温泉","山中温泉","和倉温泉宿"] },
+      "福井県": { sight: ["東尋坊","永平寺","福井県立恐竜博物館","三方五湖","越前大野城"], food: ["越前がに","ソースカツ丼","おろしそば","若狭ぐじ","羽二重餅"], stay: ["あわら温泉","福井駅近ホテル","三国温泉","若狭リゾート"] },
+      "山梨県": { sight: ["富士五湖","河口湖","昇仙峡","忍野八海","勝沼ワイナリー"], food: ["ほうとう","甲州ワイン","吉田うどん","信玄餅","甲州牛"], stay: ["河口湖温泉","石和温泉","山中湖ホテル","八ヶ岳リゾート"] },
+      "長野県": { sight: ["松本城","上高地","善光寺","白馬","地獄谷野猿公苑"], food: ["信州そば","おやき","山賊焼き","信州牛","小布施栗スイーツ"], stay: ["白馬リゾート","軽井沢ホテル","渋温泉","上諏訪温泉"] },
+      "岐阜県": { sight: ["白川郷","飛騨高山","下呂温泉","新穂高ロープウェイ","郡上八幡"], food: ["飛騨牛","高山ラーメン","五平餅","朴葉味噌","栗きんとん"], stay: ["下呂温泉宿","奥飛騨温泉郷","高山旅館","長良川温泉"] },
+      "静岡県": { sight: ["富士山","熱海温泉","三島スカイウォーク","伊豆高原","寸又峡"], food: ["静岡おでん","浜松餃子","うなぎ","沼津港海鮮","抹茶スイーツ"], stay: ["熱海温泉宿","伊豆高原ホテル","修善寺温泉","浜名湖リゾート"] },
+      "愛知県": { sight: ["名古屋城","ジブリパーク","熱田神宮","犬山城","トヨタ産業技術記念館"], food: ["ひつまぶし","味噌カツ","手羽先","きしめん","小倉トースト"], stay: ["名古屋駅近ホテル","犬山温泉","蒲郡温泉","三河湾リゾート"] },
+      "三重県": { sight: ["伊勢神宮","おかげ横丁","鳥羽水族館","志摩地中海村","熊野古道伊勢路"], food: ["伊勢えび","松阪牛","伊勢うどん","てこね寿司","赤福"], stay: ["志摩リゾート","鳥羽温泉","伊勢ホテル","湯の山温泉"] },
+      "滋賀県": { sight: ["琵琶湖","彦根城","近江八幡","比叡山延暦寺","メタセコイア並木"], food: ["近江牛","鮒ずし","近江ちゃんぽん","クラブハリエ","湖魚料理"], stay: ["琵琶湖ホテル","おごと温泉","彦根ホテル","近江八幡宿"] },
+      "京都府": { sight: ["清水寺","伏見稲荷大社","嵐山","金閣寺","伊根の舟屋"], food: ["京懐石","湯豆腐","抹茶スイーツ","にしんそば","京寿司"], stay: ["京都町家宿","嵐山温泉","祇園ホテル","天橋立温泉"] },
+      "大阪府": { sight: ["道頓堀","大阪城","ユニバーサル・スタジオ・ジャパン","新世界","海遊館"], food: ["たこ焼き","お好み焼き","串カツ","うどんすき","スパイスカレー"], stay: ["梅田ホテル","難波ホテル","USJ周辺ホテル","大阪ベイエリアホテル"] },
+      "兵庫県": { sight: ["姫路城","神戸北野異人館","有馬温泉","城崎温泉","竹田城跡"], food: ["神戸牛","明石焼き","但馬牛","ぼっかけ","灘の日本酒"], stay: ["有馬温泉宿","城崎温泉旅館","神戸ベイホテル","淡路島リゾート"] },
+      "奈良県": { sight: ["東大寺","奈良公園","春日大社","吉野山","法隆寺"], food: ["柿の葉寿司","三輪そうめん","奈良漬","茶粥","大和牛"], stay: ["奈良町ホテル","吉野旅館","橿原ホテル","洞川温泉"] },
+      "和歌山県": { sight: ["熊野古道","高野山","白浜","那智の滝","友ヶ島"], food: ["和歌山ラーメン","めはり寿司","クエ料理","みかんスイーツ","まぐろ"], stay: ["白浜温泉","高野山宿坊","勝浦温泉","和歌山市ホテル"] },
+      "鳥取県": { sight: ["鳥取砂丘","水木しげるロード","三朝温泉","大山","浦富海岸"], food: ["松葉がに","牛骨ラーメン","梨スイーツ","海鮮丼","大山どり"], stay: ["三朝温泉宿","皆生温泉","鳥取駅近ホテル","大山リゾート"] },
+      "島根県": { sight: ["出雲大社","足立美術館","石見銀山","松江城","玉造温泉"], food: ["出雲そば","しじみ料理","のどぐろ","しまね和牛","ぜんざい"], stay: ["玉造温泉","松江しんじ湖温泉","出雲ホテル","石見温泉"] },
+      "岡山県": { sight: ["倉敷美観地区","岡山後楽園","岡山城","牛窓","蒜山高原"], food: ["えびめし","デミカツ丼","ままかり","桃スイーツ","蒜山焼きそば"], stay: ["倉敷ホテル","湯原温泉","岡山駅近ホテル","牛窓リゾート"] },
+      "広島県": { sight: ["宮島","原爆ドーム","尾道","しまなみ海道","鞆の浦"], food: ["広島お好み焼き","牡蠣","尾道ラーメン","あなご飯","もみじ饅頭"], stay: ["宮島旅館","広島市内ホテル","尾道ホテル","鞆の浦温泉"] },
+      "山口県": { sight: ["角島大橋","元乃隅神社","錦帯橋","秋芳洞","萩城下町"], food: ["ふぐ料理","瓦そば","岩国寿司","獺祭","夏みかんスイーツ"], stay: ["湯田温泉","長門湯本温泉","萩温泉","下関ホテル"] },
+      "徳島県": { sight: ["鳴門の渦潮","大塚国際美術館","祖谷のかずら橋","阿波おどり会館","眉山"], food: ["徳島ラーメン","阿波尾鶏","鳴門鯛","祖谷そば","すだち料理"], stay: ["鳴門リゾート","祖谷温泉","徳島駅近ホテル","大歩危温泉"] },
+      "香川県": { sight: ["直島","栗林公園","金刀比羅宮","小豆島","父母ヶ浜"], food: ["讃岐うどん","骨付鳥","オリーブ牛","小豆島そうめん","和三盆スイーツ"], stay: ["高松ホテル","琴平温泉","小豆島リゾート","直島宿"] },
+      "愛媛県": { sight: ["道後温泉","松山城","しまなみ海道","内子町並み","下灘駅"], food: ["鯛めし","じゃこ天","みかんスイーツ","今治焼豚玉子飯","宇和島鯛めし"], stay: ["道後温泉宿","松山ホテル","しまなみ海道宿","宇和島ホテル"] },
+      "高知県": { sight: ["桂浜","四万十川","高知城","仁淀ブルー","柏島"], food: ["カツオのたたき","皿鉢料理","屋台餃子","鍋焼きラーメン","土佐あかうし"], stay: ["高知市ホテル","四万十川宿","足摺温泉","土佐リゾート"] },
+      "福岡県": { sight: ["太宰府天満宮","門司港レトロ","糸島","中洲","柳川川下り"], food: ["博多ラーメン","もつ鍋","水炊き","明太子","ごまさば"], stay: ["博多駅近ホテル","中洲ホテル","門司港ホテル","原鶴温泉"] },
+      "佐賀県": { sight: ["有田ポーセリンパーク","吉野ヶ里歴史公園","呼子朝市","武雄温泉","御船山楽園"], food: ["佐賀牛","呼子イカ","シシリアンライス","嬉野温泉湯どうふ","有田焼カレー"], stay: ["嬉野温泉","武雄温泉","唐津ホテル","佐賀駅近ホテル"] },
+      "長崎県": { sight: ["軍艦島","グラバー園","ハウステンボス","長崎新地中華街","雲仙地獄"], food: ["長崎ちゃんぽん","皿うどん","トルコライス","佐世保バーガー","カステラ"], stay: ["長崎夜景ホテル","雲仙温泉","ハウステンボスホテル","平戸温泉"] },
+      "熊本県": { sight: ["熊本城","阿蘇山","黒川温泉","水前寺成趣園","天草"], food: ["馬刺し","熊本ラーメン","あか牛丼","からし蓮根","太平燕"], stay: ["黒川温泉","阿蘇リゾート","熊本市ホテル","天草温泉"] },
+      "大分県": { sight: ["別府地獄めぐり","由布院","宇佐神宮","九重夢大吊橋","臼杵石仏"], food: ["とり天","別府冷麺","地獄蒸し","関あじ関さば","だんご汁"], stay: ["別府温泉","由布院温泉","長湯温泉","大分市ホテル"] },
+      "宮崎県": { sight: ["高千穂峡","青島","鵜戸神宮","サンメッセ日南","えびの高原"], food: ["チキン南蛮","宮崎牛","地鶏炭火焼","冷や汁","マンゴースイーツ"], stay: ["宮崎リゾート","高千穂旅館","青島温泉","えびの高原ホテル"] },
+      "鹿児島県": { sight: ["桜島","仙巌園","指宿砂むし温泉","屋久島","霧島神宮"], food: ["黒豚しゃぶしゃぶ","白熊","きびなご","さつま揚げ","鹿児島ラーメン"], stay: ["指宿温泉","霧島温泉","鹿児島市ホテル","屋久島宿"] },
+      "沖縄県": { sight: ["美ら海水族館","古宇利島","国際通り","竹富島","宮古島ビーチ"], food: ["沖縄そば","海ぶどう","アグー豚","タコライス","ブルーシール"], stay: ["恩納村リゾート","那覇ホテル","宮古島リゾート","石垣島ホテル"] }
+    };
+
+    const fallbackSeeds = {
+      sight: ["名物商店街・市場","絶景ドライブコース","季節の花スポット","歴史ある神社仏閣","美術館・博物館","夜景・展望スポット"],
+      food: ["郷土料理の名店","市場の海鮮グルメ","ご当地ラーメン","人気カフェ・スイーツ","駅前の居酒屋横丁","道の駅グルメ"],
+      stay: ["温泉旅館","駅近ホテル","海辺・湖畔の宿","高原リゾート","一棟貸し・古民家宿","記念日ホテル"]
+    };
+
+    const rankDescriptions = {
+      sight: "観光の入口にしやすい代表スポット。初めての旅でも予定に組み込みやすい候補です。",
+      food: "その土地らしさを味わえる食の候補。食べログ検索で店舗候補を比較できます。",
+      stay: "その県の旅程に合わせやすい宿泊候補。楽天トラベル検索で空室やプランを確認できます。"
+    };
+
     const tripDetails = {
       "THE CITY BAKERY 白馬": {
         highlights: "白馬岩岳やスキー場めぐりの前後に寄りやすい、山旅向きのベーカリーカフェ。パンとコーヒーで朝のテンションを上げられるのが魅力です。",
@@ -1219,7 +1507,12 @@
     const search = document.querySelector("#search");
     const resultCount = document.querySelector("#resultCount");
     const empty = document.querySelector("#empty");
+    const rankList = document.querySelector("#rankList");
+    const prefSelect = document.querySelector("#prefSelect");
+    const prefCopy = document.querySelector("#prefCopy");
     let currentFilter = "all";
+    let currentRank = "sight";
+    let currentPref = "全国";
 
     const normalize = (text) => text.toLowerCase().replace(/\s+/g, "");
 
@@ -1262,6 +1555,47 @@
       empty.style.display = filtered.length ? "none" : "block";
     }
 
+    function searchUrl(type, pref, name) {
+      const q = encodeURIComponent(`${pref} ${name}`);
+      if (type === "food") return `https://tabelog.com/rstLst/?sw=${q}`;
+      if (type === "stay") return `https://travel.rakuten.co.jp/keyword/Search.do?f_query=${q}`;
+      return `https://www.google.com/search?q=${q}%20%E8%A6%B3%E5%85%89%20%E5%85%AC%E5%BC%8F`;
+    }
+
+    function prefectureRanking(pref, type) {
+      const seed = prefectureSeeds[pref]?.[type] || [];
+      const fallback = fallbackSeeds[type].map((item) => `${pref}の${item}`);
+      return [...seed, ...fallback].slice(0, 10).map((name) => ({
+        name,
+        area: pref,
+        desc: rankDescriptions[type],
+        url: searchUrl(type, pref, name)
+      }));
+    }
+
+    function activeRankingItems() {
+      return currentPref === "全国"
+        ? (rankingData[currentRank] || [])
+        : prefectureRanking(currentPref, currentRank);
+    }
+
+    function renderRanking() {
+      const items = activeRankingItems();
+      rankList.innerHTML = items.map((item, index) => `
+        <a class="rank-card" href="${item.url}" target="_blank" rel="noopener noreferrer">
+          <span class="rank-no">${index + 1}</span>
+          <span>
+            <h3>${item.name}</h3>
+            <p>${item.desc}</p>
+            <span class="rank-area">${item.area}</span>
+          </span>
+        </a>
+      `).join("");
+      prefCopy.textContent = currentPref === "全国"
+        ? "全国版のおすすめトップ10を表示中。都道府県を選ぶと、その県の観光地・食事・宿泊施設トップ10に切り替わります。"
+        : `${currentPref}の${categoryLabels[currentRank]}トップ10を表示中。カードを押すと観光公式検索、食べログ検索、楽天トラベル検索を開きます。`;
+    }
+
     document.querySelectorAll(".filter").forEach((button) => {
       button.addEventListener("click", () => {
         document.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
@@ -1278,6 +1612,27 @@
         document.body.classList.remove("theme-adventure", "theme-postcard", "theme-lounge");
         document.body.classList.add(button.dataset.theme);
       });
+    });
+
+    document.querySelectorAll(".rank-tab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".rank-tab").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        currentRank = button.dataset.rank;
+        renderRanking();
+      });
+    });
+
+    prefectures.forEach((pref) => {
+      const option = document.createElement("option");
+      option.value = pref;
+      option.textContent = pref;
+      prefSelect.appendChild(option);
+    });
+
+    prefSelect.addEventListener("change", () => {
+      currentPref = prefSelect.value;
+      renderRanking();
     });
 
     const detailOverlay = document.querySelector("#detailOverlay");
@@ -1352,6 +1707,7 @@
     });
 
     search.addEventListener("input", render);
+    renderRanking();
     render();
   </script>
 </body>
